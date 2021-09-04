@@ -9,12 +9,12 @@ interface PageProps {
 const Page: NextPage<PageProps> = (props: PageProps) => {
   return (
     <>
+      <Navigation />
       <Header.Wrapper>
-        <Navigation />
         <Header.Context>
-          <Container size='lg'>
-            <h1>Title</h1>
-            <p>Excerpt</p>
+          <Container size='xl'>
+            <h1>Transition to TypeScript</h1>
+            <p>See how I did while translating projects in JavaScript to TypeScript and what was the real problem.</p>
           </Container>
         </Header.Context>
       </Header.Wrapper>
