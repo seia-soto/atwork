@@ -1,9 +1,10 @@
-import { styled } from '@stitches/react'
+import { styled } from '../styles/theme'
 import Container from './Container'
 
 export const Wrapper = styled(Container, {
   display: 'flex',
-  padding: '16px'
+  padding: '16px',
+  background: 'transprent'
 })
 
 export const Right = styled('div', {
@@ -21,9 +22,9 @@ export const Item = styled('a', {
   justifyContent: 'center',
   alignItems: 'center',
 
-  transition: 'color .65s ease-in-out',
+  transition: 'color .3s ease-in-out',
 
   '&:hover': {
-    color: '#004D8C'
+    color: '#2A82CB'
   }
 })

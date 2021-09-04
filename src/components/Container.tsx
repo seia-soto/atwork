@@ -1,4 +1,4 @@
-import { styled } from '@stitches/react'
+import { styled } from '../styles/theme'
 
 const Container = styled('div', {
   margin: '0 auto',

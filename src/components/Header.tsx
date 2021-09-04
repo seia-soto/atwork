@@ -1,4 +1,4 @@
-import { styled } from '@stitches/react'
+import { styled } from '../styles/theme'
 
 export const Wrapper = styled('div', {
   height: '100%',

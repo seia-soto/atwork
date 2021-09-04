@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import Platform from './layouts/Platform'
+import Platform from '../layouts/Platform'
 import 'normalize.css'
 import '../styles/platform.css'
 
