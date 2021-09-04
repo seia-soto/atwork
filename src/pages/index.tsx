@@ -3,10 +3,9 @@ import Container from '../components/Container'
 import * as Header from '../components/Header'
 import Navigation from '../layouts/Navigation'
 
-interface PageProps {
-}
+interface IPageProps {}
 
-const Page: NextPage<PageProps> = (props: PageProps) => {
+const Page: NextPage<IPageProps> = (props: IPageProps) => {
   return (
     <>
       <Header.Wrapper>
