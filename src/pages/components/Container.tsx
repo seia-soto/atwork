@@ -3,7 +3,6 @@ import { styled } from '@stitches/react'
 const Container = styled('div', {
   margin: '0 auto',
   width: '100%',
-  maxWidth: '900px',
   padding: '20px',
   boxSizing: 'border-box',
 
