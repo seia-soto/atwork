@@ -1,7 +1,10 @@
 import { styled } from '@stitches/react'
 
 export const Wrapper = styled('div', {
-  height: '100%'
+  height: '100%',
+  color: 'white',
+
+  backgroundImage: 'linear-gradient(to top, #09203f 0%, #537895 100%)'
 })
 
 export const Context = styled('div', {
