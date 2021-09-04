@@ -365,6 +365,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/next@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "@types/next@npm:9.0.0"
+  dependencies:
+    next: "*"
+  checksum: 3115931293e1928df5ecd9d0cbf8b9edc9e2d7f67467db468f3d92dac7b44199706dbd4226c33193a7fcd3fe230a1ec2c796a1a585911d40be9fdaf47e8cb16e
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:^16.7.10":
   version: 16.7.10
   resolution: "@types/node@npm:16.7.10"
@@ -817,12 +826,13 @@ __metadata:
   resolution: "atwork@workspace:."
   dependencies:
     "@stitches/react": ^1.0.0
+    "@types/next": ^9.0.0
     "@types/node": ^16.7.10
     "@types/react": ^17.0.19
     "@typescript-eslint/eslint-plugin": ^4.30.0
     "@typescript-eslint/parser": ^4.30.0
     eslint: ^7.32.0
-    eslint-config-next: 11.1.2
+    eslint-config-next: ^11.1.2
     eslint-config-standard: ^16.0.3
     eslint-import-resolver-node: ^0.3.6
     eslint-plugin-import: ^2.24.2
@@ -830,6 +840,7 @@ __metadata:
     eslint-plugin-promise: ^5.1.0
     eslint-plugin-react: ^7.25.1
     next: ^11.1.2
+    normalize.css: ^8.0.1
     react: ^17.0.2
     react-dom: ^17.0.2
     standard-version: ^9.3.1
@@ -2018,7 +2029,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:11.1.2":
+"eslint-config-next@npm:^11.1.2":
   version: 11.1.2
   resolution: "eslint-config-next@npm:11.1.2"
   dependencies:
@@ -3893,7 +3904,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"next@npm:^11.1.2":
+"next@npm:*, next@npm:^11.1.2":
   version: 11.1.2
   resolution: "next@npm:11.1.2"
   dependencies:
@@ -4092,6 +4103,13 @@ fsevents@~2.3.1:
   version: 3.0.0
   resolution: "normalize-path@npm:3.0.0"
   checksum: 88eeb4da891e10b1318c4b2476b6e2ecbeb5ff97d946815ffea7794c31a89017c70d7f34b3c2ebf23ef4e9fc9fb99f7dffe36da22011b5b5c6ffa34f4873ec20
+  languageName: node
+  linkType: hard
+
+"normalize.css@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "normalize.css@npm:8.0.1"
+  checksum: 4698cae88ec35e3f3e82f9f9402e6ffb906c27ccd6373cad88e6b3f5634fc7a043cb38702472299e5edb73825cf8b18d5fd9283f58829eddda79ea97453049a2
   languageName: node
   linkType: hard
 
