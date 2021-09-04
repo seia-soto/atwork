@@ -1,16 +1,17 @@
 import type { NextPage } from 'next'
 import Container from '../components/Container'
+import * as Divider from '../components/Divider'
 import Navigation from '../layouts/Navigation'
 
-interface PageProps {
-}
+interface IPageProps {}
 
-const Page: NextPage<PageProps> = (props: PageProps) => {
+const Page: NextPage<IPageProps> = (props: IPageProps) => {
   return (
     <>
       <Navigation />
       <Container size='md'>
         <h1>Resume</h1>
+        <Divider.Featured />
         <p>Activities are shown in latest order.</p>
       </Container>
     </>
