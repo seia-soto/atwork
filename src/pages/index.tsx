@@ -8,8 +8,8 @@ interface IPageProps {}
 const Page: NextPage<IPageProps> = (props: IPageProps) => {
   return (
     <>
+      <Navigation />
       <Header.Wrapper layout='main'>
-        <Navigation />
         <Header.Context>
           <Container size='xl'>
             <h1>Transition to TypeScript</h1>
