@@ -11,7 +11,7 @@ const NavigationLayout: NextPage = () => {
 
         <Navigation.Right>
           <Navigation.Item>Resume</Navigation.Item>
-          <Navigation.Item>Reports</Navigation.Item>
+          <Navigation.Item>Stories</Navigation.Item>
         </Navigation.Right>
       </Navigation.Wrapper>
     </Container>
