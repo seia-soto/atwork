@@ -24,7 +24,8 @@ export const Context = styled('div', {
   variants: {
     layout: {
       sub: {
-        height: '250px'
+        height: '200px',
+        paddingBottom: 0
       }
     }
   }

@@ -12,6 +12,7 @@ export const Full = styled('div', {
   maxWidth: '100%',
   width: '400px',
   margin: '28px auto',
+  marginBottom: 0,
 
   variants: {
     location: {
