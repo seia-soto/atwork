@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { styled } from '../styles/theme'
 import Container from './Container'
 
@@ -13,7 +14,7 @@ export const Right = styled('div', {
   marginLeft: 'auto',
   gap: '14px'
 })
-export const Item = styled('a', {
+export const StyledItem = styled('a', {
   display: 'inline-flex',
   height: '100%',
   color: 'inherit',
@@ -28,3 +29,16 @@ export const Item = styled('a', {
     color: '#2A82CB'
   }
 })
+
+interface ILinkComponentProps {
+  href?: string
+  [keys: string]: unknown
+}
+
+export const Item = ({ href, ...props }: ILinkComponentProps) => {
+  return (
+    <Link href={href || ''} passHref>
+      <StyledItem {...props} />
+    </Link>
+  )
+}
