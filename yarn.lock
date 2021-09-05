@@ -395,14 +395,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17.0.19":
-  version: 17.0.19
-  resolution: "@types/react@npm:17.0.19"
+"@types/react@npm:^17.0.20":
+  version: 17.0.20
+  resolution: "@types/react@npm:17.0.20"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: d5af52623dd863e5a9f64eb72979f19c21e03012e25ee93adc93f664ed7976e81b654128dc653b225ad5ba2aaae24e0febe37face272bb051d6289e23ed7177d
+  checksum: e342bfaa4fe052fc3a445ea49f746f3fd82cfc9c8028eae139a3e0763ead1871f353bd40da2a472f23d2b52544d2781d40e3159c0703e7e2ff08c13f067a3b9c
   languageName: node
   linkType: hard
 
@@ -828,7 +828,7 @@ __metadata:
     "@stitches/react": ^1.0.0
     "@types/next": ^9.0.0
     "@types/node": ^16.7.10
-    "@types/react": ^17.0.19
+    "@types/react": ^17.0.20
     "@typescript-eslint/eslint-plugin": ^4.30.0
     "@typescript-eslint/parser": ^4.30.0
     eslint: ^7.32.0
@@ -843,6 +843,7 @@ __metadata:
     normalize.css: ^8.0.1
     react: ^17.0.2
     react-dom: ^17.0.2
+    react-icons: ^4.2.0
     standard-version: ^9.3.1
     typescript: ^4.4.2
   languageName: unknown
@@ -4719,6 +4720,15 @@ fsevents@~2.3.1:
   peerDependencies:
     react: 17.0.2
   checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "react-icons@npm:4.2.0"
+  peerDependencies:
+    react: "*"
+  checksum: 2b42d9b0ac85a57f8de28819b5f452b2c851f4caec09a855596d47557b775a434802fce1f3dc3811eebf46cf4d7c79fa4650330d5772345d6839f86c83afc01d
   languageName: node
   linkType: hard
 

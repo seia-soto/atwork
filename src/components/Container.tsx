@@ -4,7 +4,6 @@ const Container = styled('div', {
   margin: '0 auto',
   width: '100%',
   padding: '20px',
-  paddingBottom: 0,
   boxSizing: 'border-box',
 
   variants: {

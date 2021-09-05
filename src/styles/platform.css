@@ -1,5 +1,5 @@
 * {
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   box-sizing: border-box;
   word-break: keep-all;
 }
@@ -8,6 +8,14 @@ body {
   min-height: 100%;
 }
 
+p, h1, h2, h3, h4, h5, h6 {
+  line-height: 1.4em;
+}
 h2, h3, h4, h5, h6 {
   color: rgba(0,0,0,.6)
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

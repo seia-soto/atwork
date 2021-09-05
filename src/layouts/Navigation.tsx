@@ -12,7 +12,7 @@ const NavigationLayout: NextPage = () => {
 
       <Navigation.Right>
         <Navigation.Item href='/resume'>Resume</Navigation.Item>
-        <Navigation.Item>Stories</Navigation.Item>
+        <Navigation.Item href='/stories'>Stories</Navigation.Item>
       </Navigation.Right>
     </Navigation.Wrapper>
   )

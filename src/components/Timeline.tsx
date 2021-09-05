@@ -1,37 +1,42 @@
+import type { IconType } from 'react-icons'
 import { styled } from '../styles/theme'
 
-export const List = styled('li', {
-  color: 'rgba(0,0,0,.7)',
-  margin: '4px 0'
+export const ItemWrapper = styled('div', {
+  display: 'flex',
+  gap: '11px'
 })
-export const Ticker = styled('span', {
+export const ItemContext = styled('p', {
   display: 'inline-flex',
   justifyContent: 'center',
-  marginRight: '8px',
-
-  color: 'rgba(0,0,0,.5)',
-  fontSize: '12px'
+  alignItems: 'center',
+  margin: '2.5px 0'
 })
-export const Link = styled('a', {
-  color: '#1473e6',
-  textDecoration: 'none'
+export const ItemParagraph = styled('p', {
+  margin: 0
 })
 
-interface ITimelineItem {
-  ticker: string
-  status: string
-  institute: string
-  link: string
+export const ItemIcon = styled(ItemContext, {
+  fontSize: '1.5em'
+})
+
+interface IIconItemComponentProps {
+  icon: IconType
+  children: unknown
+
+  [keys: string]: unknown
 }
 
-export const Item = ({ ticker, status, institute, link }: ITimelineItem) => {
+export const Item = ({ icon: Icon, children }: IIconItemComponentProps) => {
   return (
-    <>
-      <List>
-        <Ticker>{ticker}</Ticker>
-        {status + ': '}
-        <Link href={link} target='_blank'>{institute}</Link>
-      </List>
-    </>
+    <ItemWrapper>
+      <ItemIcon>
+        <Icon />
+      </ItemIcon>
+      <ItemContext>
+        <ItemParagraph>
+          {children}
+        </ItemParagraph>
+      </ItemContext>
+    </ItemWrapper>
   )
 }

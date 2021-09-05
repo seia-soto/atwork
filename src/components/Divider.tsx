@@ -7,18 +7,7 @@ export const Featured = styled('div', {
 })
 
 export const Full = styled('div', {
-  background: 'rgba(0,0,0,.4)',
+  background: 'rgba(0,0,0,.15)',
   height: '1px',
-  maxWidth: '100%',
-  width: '400px',
-  margin: '28px auto',
-  marginBottom: 0,
-
-  variants: {
-    location: {
-      left: {
-        marginLeft: 0
-      }
-    }
-  }
+  maxWidth: '100%'
 })

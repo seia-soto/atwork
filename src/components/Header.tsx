@@ -1,32 +1,25 @@
 import { styled } from '../styles/theme'
+import Container from './Container'
 
 export const Wrapper = styled('div', {
   height: '100%',
 
   variants: {
     layout: {
-      main: {
-        color: 'white',
-        backgroundImage: 'linear-gradient(to top, #09203f 0%, #537895 100%)'
+      featured: {
+        backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,.85), rgba(255,255,255,.85)), url(/images/pexels-pixabay-509922.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'bottom',
+        backgroundPositionX: 'center'
       }
     }
   }
 })
 
-export const Context = styled('div', {
+export const Context = styled(Container, {
   display: 'flex',
-  height: '450px',
-  maxHeight: '100%',
-  padding: '25px',
+  height: '550px',
+  maxHeight: 'calc(100vh - 64px)', // NOTE: 100vh - high of navigation bar
 
-  flexDirection: 'column-reverse',
-
-  variants: {
-    layout: {
-      sub: {
-        height: '200px',
-        paddingBottom: 0
-      }
-    }
-  }
+  flexDirection: 'column-reverse'
 })
