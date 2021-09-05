@@ -4,7 +4,7 @@ import Container from './Container'
 
 export const Wrapper = styled(Container, {
   display: 'flex',
-  padding: '16px',
+  padding: '12px',
   background: 'transprent'
 })
 
