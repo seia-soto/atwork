@@ -24,7 +24,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
               <Effects.Featured href='https://github.com/typed-sh/blog'>설계</Effects.Featured>하고<br />
               <Effects.Featured href='https://github.com/seia-soto/clubhouse-api'>분석</Effects.Featured>했습니다<br />
               <br />
-              그리고 <Effects.Gradient color='blue'>만들어나가는 중</Effects.Gradient>입니다.
+              그리고 <Effects.Colored color='blue'>만들어나가는 중</Effects.Colored>입니다.
             </h1>
           </div>
         </Header.Context>

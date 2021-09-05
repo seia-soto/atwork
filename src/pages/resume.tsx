@@ -32,7 +32,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
       <Divider.Full />
       <Container size='md'>
         <h2>
-          Education
+          <Effects.Colored color='blue'>Education</Effects.Colored>
         </h2>
         <p>현재 수원의 청명고등학교를 재학 중입니다.</p>
 
@@ -44,7 +44,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
         </Timeline.Item>
 
         <h2>
-          Contacts
+          <Effects.Colored color='blue'>Contacts</Effects.Colored>
         </h2>
         <p>모든 커뮤니케이션은 개인 의견이며 특정 단체를 대변하지 않습니다.</p>
 
@@ -53,7 +53,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
         </Timeline.Item>
 
         <h2>
-          Status
+          <Effects.Colored color='blue'>Status</Effects.Colored>
         </h2>
         <p>현재 2개 이상의 서버를 관리하고 있으며 많은 단체에서 기술 지원 역할을 맡고 있습니다.</p>
 

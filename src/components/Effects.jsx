@@ -12,6 +12,19 @@ export const Highlighter = styled(Base, {
   boxDecorationBlock: 'clone'
 })
 
+export const Colored = styled(Base, {
+  variants: {
+    color: {
+      blue: {
+        color: '#2a5298'
+      },
+      pink: {
+        color: '#ffdde1'
+      }
+    }
+  }
+})
+
 export const Gradient = styled(Base, {
   '-webkit-background-clip': 'text',
   '-webkit-text-fill-color': 'transparent',
