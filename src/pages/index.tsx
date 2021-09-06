@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import { MdArrowForward } from 'react-icons/md'
 import Container from '../components/Container'
 import * as Button from '../components/Button'
@@ -13,6 +14,9 @@ interface IPageProps {}
 const Page: NextPage<IPageProps> = (props: IPageProps) => {
   return (
     <>
+      <Head>
+        <title>HoJeong Go: Sophomore in general problem solving</title>
+      </Head>
       <Header.Wrapper layout='featured'>
         <Navigation />
         <Header.Context size='lg'>

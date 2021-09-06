@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import {
   MdArrowForward,
   MdSchool,
@@ -36,6 +37,10 @@ interface IPageProps {}
 const Page: NextPage<IPageProps> = (props: IPageProps) => {
   return (
     <>
+      <Head>
+        <title>Curriculum Vitae. by HoJeong Go</title>
+      </Head>
+
       <Navigation />
 
       <Container size='md'>
