@@ -43,9 +43,11 @@ export const Gradient = styled(Base, {
 
 export const Featured = styled('a', {
   color: 'inherit',
-  textDecoration: 'underline rgba(0,0,0,.4)',
+  borderBottom: '1px solid rgba(0,0,0,.2)',
+
+  textDecoration: 'border-bottom rgba(0,0,0,.4)',
 
   '&:hover': {
-    textDecoration: 'underline black'
+    borderBottom: '1px solid black'
   }
 })
