@@ -7,6 +7,7 @@ import * as Effects from '../components/Effects'
 import * as Images from '../components/Images'
 import * as Timeline from '../components/Timeline'
 import Navigation from '../layouts/Navigation'
+import Profile from '../layouts/Profile'
 import * as paragraph from '../styles/paragraph'
 
 const Link = (props: { [keys: string]: unknown }) => {
@@ -36,8 +37,11 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
         <p>
           단순한 개발자가 아니라 모두와 편하게 말하며 솔루션을 제공할 수 있는 사람이 되고자 합니다.
         </p>
-        <Button.Icon theme='black' icon={MdArrowForward} href='/curriculum-vitae'>CV로 세부사항 조회</Button.Icon>
+        <Button.Icon icon={MdArrowForward} href='/curriculum-vitae'>CV로 세부사항 조회</Button.Icon>
       </Container>
+
+      <Divider.Full />
+      <Profile />
       <Divider.Full />
 
       <Container size='md'>
@@ -113,7 +117,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
             또 성능을 위해서 최근 swc를 도입한 Next.JS와 Emotion 등 메인스트림 CSS-in-JS보다 2배 가까이 빠른 Stitches를 채택했습니다.<br />
             저는 언제나 더 좋은 성능을 얻기 위해 기존 코드에 지장이 없을 때 최신 라이브러리로의 마이그레이션을 늦추지 않습니다.
           </p>
-          <Button.Icon theme='black' icon={MdArrowForward} href='https://github.com/seia-soto/atwork/blob/master/package.json'>package.json 보기</Button.Icon>
+          <Button.Icon icon={MdArrowForward} href='https://github.com/seia-soto/atwork/blob/master/package.json'>package.json 보기</Button.Icon>
         </div>
       </Container>
       <Divider.Full />
@@ -149,7 +153,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
             저는 여기에서 조직 내 CDN을 사용할 수 있도록 라이브러리에 기여하고 최근 TypeScript로 성공적으로 전환시켰습니다.<br />
             현재는 제가 라이브러리를 관리하고 있습니다.
           </p>
-          <Button.Icon theme='black' icon={MdArrowForward} href='https://www.npmjs.com/package/snowpack-plugin-import-map'>NPM에서 보기</Button.Icon>
+          <Button.Icon icon={MdArrowForward} href='https://www.npmjs.com/package/snowpack-plugin-import-map'>NPM에서 보기</Button.Icon>
         </div>
 
         <Images.Featured alt='Preview image of atwork' src='/images/projects/snowpack-plugin-import-map-presentation.png' />
@@ -171,7 +175,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
             그러나 ESM을 통해서 웹 브라우저에서 직접적으로 라이브러리 하나하나를 다룰 수 있게 되었습니다.<br />
             또한 HTTP/2와 QUIC의 보편화로 인하여 불안정한 네트워크 상태에도 성능 저하의 위험성이 낮습니다.
           </p>
-          <Button.Icon theme='black' icon={MdArrowForward} href='https://github.com/seia-soto/presentation-unbundled-code-splitting-strategy'>프레젠테이션 보기</Button.Icon>
+          <Button.Icon icon={MdArrowForward} href='https://github.com/seia-soto/presentation-unbundled-code-splitting-strategy'>프레젠테이션 보기</Button.Icon>
         </div>
       </Container>
       <Divider.Full />
