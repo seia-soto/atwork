@@ -30,7 +30,7 @@ export const Featured = styled('img', {
   display: 'inline-block',
   width: '100%',
   borderRadius: '12px',
-  margin: '16px',
+  margin: '16px 0',
   boxShadow: '0 0 30px -9px rgba(0,0,0,.15)',
 
   transition: 'box-shadow .4s ease-in-out',
