@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
-import Avatar from '../components/Avatar'
+import * as Images from '../components/Images'
 import * as Navigation from '../components/Navigation'
 
 const NavigationLayout: NextPage = () => {
   return (
     <Navigation.Wrapper size='md'>
       <Navigation.Item type='featured' href='/'>
-        <Avatar src='/images/avatar.png' css={{ marginRight: '12px', height: '40px' }} />
+        <Images.Avatar src='/images/avatar.png' css={{ marginRight: '12px', height: '40px' }} />
         HoJeong Go
       </Navigation.Item>
 
