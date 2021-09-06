@@ -6,6 +6,7 @@ import * as Divider from '../components/Divider'
 import * as Effects from '../components/Effects'
 import * as Header from '../components/Header'
 import Navigation from '../layouts/Navigation'
+import * as paragraph from '../styles/paragraph'
 
 interface IPageProps {}
 
@@ -32,16 +33,18 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
       <Divider.Full />
 
       <Container size='md'>
-        <h1>
-          HTML로 시작,<br />
-          TypeScript로 진행 중
-        </h1>
-        <h3>
-          제 첫 언어는 HTML입니다.<br />
-          2016년 Atom Editor와 함께 시작했습니다.<br />
-          계속해서 여러 커뮤니티의 도움을 받아 성장했고<br />
-          그리고 지금 스스로 검색하여 서비스를 만들고 있습니다.
-        </h3>
+        <div className={paragraph.featured()}>
+          <h1>
+            HTML로 시작,<br />
+            TypeScript로 진행 중
+          </h1>
+          <h3>
+            제 첫 언어는 HTML입니다.<br />
+            2016년 Atom Editor와 함께 시작했습니다.<br />
+            계속해서 여러 커뮤니티의 도움을 받아 성장했고<br />
+            그리고 지금 스스로 검색하여 서비스를 만들고 있습니다.
+          </h3>
+        </div>
         <Button.Icon theme='black' icon={MdArrowForward} href='https://github.com/seia-soto'>GitHub에서 활동 보기</Button.Icon>
       </Container>
     </>
