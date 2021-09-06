@@ -23,6 +23,10 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
         <Button.Icon theme='black' icon={MdArrowForward} href='/resume'>Resume으로 한 눈에 보기</Button.Icon>
       </Container>
       <Divider.Full />
+
+      <Container size='md'>
+        <p>이 페이지는 현재 준비 중입니다.</p>
+      </Container>
     </>
   )
 }

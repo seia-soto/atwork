@@ -245,6 +245,18 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
         </div>
       </Container>
       <Divider.Full />
+
+      <Container size='md'>
+        <h2>
+          여기까지 읽어주셔서 정말 감사합니다.
+        </h2>
+        <p>
+          언제나 많은 사람들이 저에게 조언하곤 합니다.<br />
+          항상 제가 바뀌지 않는 것은 조언들의 문제가 아니라 그것을 실천하지 않기 때문이라고 생각합니다.<br />
+          <br />
+          언제나 바뀌어가는 모습 보실 수 있도록 스스로를 가꾸겠습니다.
+        </p>
+      </Container>
     </>
   )
 }

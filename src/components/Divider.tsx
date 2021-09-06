@@ -14,5 +14,6 @@ export const Full = styled('div', {
 
 export const Text = styled('h1', {
   paddingTop: '56px',
-  fontSize: '4.5em'
+  fontSize: '4.5em',
+  fontStyle: 'italic'
 })

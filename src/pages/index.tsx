@@ -46,6 +46,19 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
           </h3>
         </div>
         <Button.Icon theme='black' icon={MdArrowForward} href='https://github.com/seia-soto'>GitHub에서 활동 보기</Button.Icon>
+
+        <div className={paragraph.featured({ align: 'right' })}>
+          <h1>
+            모든 업무에서,<br />
+            부담없이
+          </h1>
+          <h3>
+            저는 개발 외에도 경제와 마케팅까지<br />
+            많은 영역을 공부하고 있습니다.<br />
+            이를 통해서 개발자라는 직업군에 있는 딜레마를 극복하고<br />
+            더 많은 사람들과 성공적으로 문제를 해결하길 원합니다.
+          </h3>
+        </div>
       </Container>
     </>
   )
