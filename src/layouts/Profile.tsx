@@ -10,6 +10,7 @@ const Container = styled('div', {
 
   width: '100%',
   height: '650px',
+  maxHeight: '100vh',
 
   backgroundImage: 'linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)'
 })

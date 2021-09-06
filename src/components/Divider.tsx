@@ -11,3 +11,8 @@ export const Full = styled('div', {
   height: '1px',
   maxWidth: '100%'
 })
+
+export const Text = styled('h1', {
+  paddingTop: '56px',
+  fontSize: '4.5em'
+})

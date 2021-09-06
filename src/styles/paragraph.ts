@@ -11,6 +11,16 @@ export const featured = css({
 
   variants: {
     level: {
+      lg: {
+        '& h2': {
+          fontSize: '28px',
+          color: 'rgba(0,0,0,.6)'
+        },
+        '& h3': {
+          fontSize: '22px',
+          color: 'rgba(0,0,0,.9)'
+        }
+      },
       xl: {
         '& h2': {
           fontSize: '36px',

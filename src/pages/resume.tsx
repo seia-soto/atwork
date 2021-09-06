@@ -86,9 +86,9 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
           <Link href='https://github.com/typed-sh/blog'>typed-sh/blog</Link>: Next.JS, Chakra-UI, MDX로 만든 웹 블로그입니다.
         </Timeline.Item>
       </Container>
-      <Divider.Full />
+      <Divider.Full css={{ marginTop: '24px' }} />
 
-      <Container size='xl'>
+      <Container size='md'>
         <h1>
           <Link href='https://github.com/seia-soto/atwork'>atwork</Link>
         </h1>
@@ -98,7 +98,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
         </p>
         <Images.Featured alt='Preview image of atwork' src='/images/projects/atwork-preview.png' />
 
-        <div className={paragraph.featured({ level: 'xl', pad: 'featured' })}>
+        <div className={paragraph.featured({ level: 'lg', pad: 'featured' })}>
           <h2>
             라이브러리는<br />
             더 없습니다
@@ -111,7 +111,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
           </h3>
           <p>
             저의 개발 활동은 대부분 백엔드나 유틸리티에 초점이 더 맞추어져 있습니다.<br />
-            그리고 프론트엔드 레포지토리는 거의 UI 컴포넌트 라이브러리를 채택하고 있습니다.<br />
+            그리고 프론트엔드 레포지토리는 대부분 UI 컴포넌트 라이브러리를 채택하고 있습니다.<br />
             <br />
             그럼에도 불구하고 외부 라이브러리의 도움없이도 레이아웃을 잡을 수 있고 한 페이지를 디자인할 수 있습니다.<br />
             또 성능을 위해서 최근 swc를 도입한 Next.JS와 Emotion 등 메인스트림 CSS-in-JS보다 2배 가까이 빠른 Stitches를 채택했습니다.<br />
@@ -122,7 +122,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
       </Container>
       <Divider.Full />
 
-      <Container size='xl'>
+      <Container size='md'>
         <h1>
           <Link href='https://github.com/seia-soto/snowpack-plugin-import-map'>snowpack-plugin-import-map</Link>
         </h1>
@@ -130,9 +130,9 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
           프론트엔드 구조에 번들링없는 MSA 구조를 제안합니다.<br />
           그리고 번들링없는 프론트엔드를 꿈꿉니다.
         </p>
-        <Images.Featured alt='GitHub screenshot of snowpack-plugin-import-map' src='/images/projects/snowpack-plugin-import-map-preview.png' />
+        <Images.Featured alt='GitHub screenshot of snowpack-plugin-import-map' src='/images/projects/snowpack-plugin-import-map-presentation-1.png' />
 
-        <div className={paragraph.featured({ level: 'xl', pad: 'featured' })}>
+        <div className={paragraph.featured({ level: 'lg', pad: 'featured' })}>
           <h2>
             프론트엔드 그리고<br />
             마이크로서비스 아키텍쳐
@@ -156,8 +156,8 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
           <Button.Icon icon={MdArrowForward} href='https://www.npmjs.com/package/snowpack-plugin-import-map'>NPM에서 보기</Button.Icon>
         </div>
 
-        <Images.Featured alt='Preview image of atwork' src='/images/projects/snowpack-plugin-import-map-presentation.png' />
-        <div className={paragraph.featured({ level: 'xl', align: 'right', pad: 'featured' })}>
+        <Images.Featured alt='Preview image of atwork' src='/images/projects/snowpack-plugin-import-map-presentation-2.png' />
+        <div className={paragraph.featured({ level: 'lg', align: 'right', pad: 'featured' })}>
           <h2>
             번들링없는 프론트엔드<br />
             지금 제안합니다
@@ -176,6 +176,72 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
             또한 HTTP/2와 QUIC의 보편화로 인하여 불안정한 네트워크 상태에도 성능 저하의 위험성이 낮습니다.
           </p>
           <Button.Icon icon={MdArrowForward} href='https://github.com/seia-soto/presentation-unbundled-code-splitting-strategy'>프레젠테이션 보기</Button.Icon>
+        </div>
+      </Container>
+      <Divider.Full />
+
+      <Container size='md'>
+        <h1>
+          <Link href='https://github.com/seia-soto/clubhouse-api'>clubhouse-api</Link>
+        </h1>
+        <p>
+          저는 웹 애플리케이션의 외관 뿐만 아니라 구조를 이해합니다.<br />
+          Clubhouse는 2021년 초 한국에서 인기를 끈 SNS 애플리케이션입니다.
+        </p>
+        <Images.Featured alt='GitHub screenshot of snowpack-plugin-import-map' src='/images/projects/clubhouse-preview.png' />
+
+        <div className={paragraph.featured({ level: 'lg', pad: 'featured' })}>
+          <h2>
+            애플리케이션에 가장 적합한<br />
+            전반적인 모델 탐구
+          </h2>
+          <h3>
+            애플리케이션의 동작 원리를 파악하는 것은<br />
+            그 구조를 다시 개선하여 적용할 수 있다는 것을<br />
+            의미합니다.
+          </h3>
+          <p>
+            대부분의 웹 애플리케이션은 굉장히 추상화가 잘 되어 있어 어떤 언어를 사용하더라도 접근성이 좋습니다.<br />
+            하지만 이것은 반대로 해커들이 저의 웹 애플리케이션을 훨씬 더 잘 이해할 수 있다는 말이기도 합니다.<br />
+            <br />
+            작동 원리 파악을 통하여 더 많은 관점을 가지고 애플리케이션을 향상시킬 수 있습니다.<br />
+            그리고 보안에 대해서 전문가 분들이 분명히 있지만 개발자로서 소통에 편의를 가질 수도 있습니다.<br />
+            <br />
+            현재 프로젝트는 Clubhouse의 프라이버시 이슈가 계속됨에 따라 중단되었으며 더 업데이트되지 않습니다.
+          </p>
+          <Button.Icon icon={MdArrowForward} href='https://github.com/seia-soto/clubhouse-api'>GitHub에서 보기</Button.Icon>
+        </div>
+      </Container>
+      <Divider.Full />
+
+      <Container size='md'>
+        <h1>
+          <Link href='https://github.com/typed-sh/blog'>typed-sh/blog</Link>
+        </h1>
+        <p>
+          Typed.sh는 제가 운영하고 있는 팀 블로그입니다.<br />
+          현재는 Ghost-CMS를 사용하고 있으나 이전에 마크다운 블로그로 운영되었습니다.
+        </p>
+        <Images.Featured alt='GitHub screenshot of snowpack-plugin-import-map' src='/images/projects/typedsh-preview.png' />
+
+        <div className={paragraph.featured({ level: 'lg', pad: 'featured' })}>
+          <h2>
+            SSG 그리고 SSR<br />
+            원하는 것만 골라가세요
+          </h2>
+          <h3>
+            Next.JS를 어떤 방식으로 써도 좋습니다.<br />
+            하지만 블로그에서는 최대한의 가용성을 위해<br />
+            서버의 유무가 서비스에 영향을 주지 않도록 했습니다.
+          </h3>
+          <p>
+            Typed.sh 마크다운 블로그를 개발할 당시에는 정적 타깃만을 목표로 삼았었습니다.<br />
+            이전의 데이터 손실, 같은 실수를 막기 위해서 서버의 유무와는 무관하게 서버가 꺼져도 돌아가는 서비스를 원했습니다.<br />
+            그 결과로 SSR 그리고 SSG에서 모두 똑같은 화면을 보여주는 것으로 완료했습니다.<br />
+            <br />
+            이 경험 자체가 기술적으로 진보했다거나 의미가 크게 없더라도 스스로에게 목표를 달성했다는 점에서 그리고 서비스를 더욱 안전하게 했다는 점에서 의미를 가진다 생각합니다.
+          </p>
+          <Button.Icon icon={MdArrowForward} href='https://github.com/typed-sh/blog'>GitHub에서 보기</Button.Icon>
         </div>
       </Container>
       <Divider.Full />
