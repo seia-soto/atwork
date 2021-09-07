@@ -21,6 +21,7 @@ const Page: NextPage<IPageProps> = (props) => {
     <>
       <Head>
         <title>{props.post.frontmatter.title} | Story by HoJeong Go</title>
+        <meta name='description' content={props.post.frontmatter.excerpt} />
       </Head>
 
       <Navigation />

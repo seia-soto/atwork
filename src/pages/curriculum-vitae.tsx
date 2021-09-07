@@ -40,6 +40,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
     <>
       <Head>
         <title>Curriculum Vitae. by HoJeong Go</title>
+        <meta name='description' content='A sophomore software engineer.' />
       </Head>
 
       <Navigation />

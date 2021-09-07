@@ -14,7 +14,8 @@ const Page: NextPage = () => {
   return (
     <>
       <Head>
-        <title>HoJeong Go: Sophomore in general problem solving</title>
+        <title>HoJeong Go</title>
+        <meta name='description' content='A sophomore software engineer focusing for better general problem solving' />
       </Head>
       <Header.Wrapper layout='featured'>
         <Navigation />
