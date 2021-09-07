@@ -112,7 +112,6 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
             </h2>
             <h3>
               성능을 위해 사용된 라이브러리는<br />
-              단지 react, react-dom,<br />
               react-icons, normalize.css,<br />
               그리고 @stitches/react 뿐입니다.
             </h3>
