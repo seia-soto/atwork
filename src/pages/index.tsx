@@ -10,9 +10,7 @@ import * as Header from '../components/Header'
 import Navigation from '../layouts/Navigation'
 import * as paragraph from '../styles/paragraph'
 
-interface IPageProps {}
-
-const Page: NextPage<IPageProps> = (props: IPageProps) => {
+const Page: NextPage = () => {
   return (
     <>
       <Head>

@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app'
+import type { FC } from 'react'
 import { RecoilRoot, useRecoilValue } from 'recoil'
 import 'normalize.css'
 import { light, dark, globals } from '../styles/theme'
@@ -6,7 +7,7 @@ import { Foundation } from '../components/Platform'
 import * as atoms from '../atoms'
 import { useEffect, useState } from 'react'
 
-const ThemeProvider = ({ children }: { [keys: string]: unknown }) => {
+const ThemeProvider: FC = ({ children }) => {
   const [theme, setTheme] = useState(light)
   const isLight = useRecoilValue(atoms.light)
 

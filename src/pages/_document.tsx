@@ -1,7 +1,7 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import { getCssText } from '../styles/theme'
 
-const MyApp = () => {
+const MyDocument = () => {
   return (
     <Html>
       <Head>
@@ -15,4 +15,4 @@ const MyApp = () => {
   )
 }
 
-export default MyApp
+export default MyDocument

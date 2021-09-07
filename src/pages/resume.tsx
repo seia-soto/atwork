@@ -25,9 +25,7 @@ const Title = ({ children }: { children: string }) => {
   )
 }
 
-interface IPageProps {}
-
-const Page: NextPage<IPageProps> = (props: IPageProps) => {
+const Page: NextPage = () => {
   return (
     <>
       <Head>
@@ -111,7 +109,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
               더 없습니다
             </h2>
             <h3>
-              성능을 위해 사용된 라이브러리는<br />
+              성능을 위해 사용된 UI 라이브러리는<br />
               react-icons, normalize.css,<br />
               그리고 @stitches/react 뿐입니다.
             </h3>

@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import type { FC } from 'react'
 import Head from 'next/head'
 import {
   MdArrowForward,
@@ -19,12 +20,12 @@ import * as Effects from '../components/Effects'
 import Navigation from '../layouts/Navigation'
 import * as Timeline from '../components/Timeline'
 
-const Link = (props: { [keys: string]: unknown }) => {
+const Link: FC<{ [keys: string]: unknown }> = (props) => {
   return (
     <Effects.Featured target='_blank' css={{ margin: 0 }} {...props} />
   )
 }
-const Title = ({ children }: { children: string }) => {
+const Title: FC = ({ children }) => {
   return (
     <h2>
       <Effects.Colored color='blue'>{children}</Effects.Colored>
