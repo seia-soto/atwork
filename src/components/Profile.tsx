@@ -19,7 +19,7 @@ export const Box = styled('div', {
   justifyContent: 'space-between',
 
   color: '$black900',
-  backgroundImage: 'linear-gradient(to right, $white200, $white200)',
+  backgroundImage: 'linear-gradient(to right, $white400, $white400)',
   backdropFilter: 'blur(45px)',
   boxShadow: '0 16px 55px -9px rgba(0,0,0,.4)', // NOTE: Token N/A
 

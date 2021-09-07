@@ -21,10 +21,10 @@ export const Featured = styled(Base, {
   transition: 'all 0.2s ease-in-out',
   transitionProperty: 'color',
 
-  color: '$black500',
+  color: '$black600',
 
   '&:hover': {
-    color: '$black900'
+    color: '$black'
   }
 })
 

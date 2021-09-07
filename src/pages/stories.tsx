@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { MdArrowForward } from 'react-icons/md'
+import { Context } from '../components/Platform'
 import Container from '../components/Container'
 import * as Button from '../components/Button'
 import * as Divider from '../components/Divider'
@@ -24,9 +25,11 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
       </Container>
       <Divider.Full />
 
-      <Container size='md'>
-        <p>이 페이지는 현재 준비 중입니다.</p>
-      </Container>
+      <Context>
+        <Container size='md'>
+          <p>이 페이지는 현재 준비 중입니다.</p>
+        </Container>
+      </Context>
     </>
   )
 }

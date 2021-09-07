@@ -2,7 +2,8 @@ import { css } from './theme'
 
 export const featured = css({
   '& h1': {
-    fontSize: '28px'
+    fontSize: '28px',
+    color: '$black'
   },
   '& h3': {
     fontSize: '20px',

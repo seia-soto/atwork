@@ -844,6 +844,8 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-icons: ^4.2.0
+    recoil: ^0.4.1
+    recoil-persist: ^3.0.0
     standard-version: ^9.3.1
     typescript: ^4.4.2
   languageName: unknown
@@ -2756,6 +2758,13 @@ fsevents@~2.3.1:
   version: 4.2.8
   resolution: "graceful-fs@npm:4.2.8"
   checksum: 5d224c8969ad0581d551dfabdb06882706b31af2561bd5e2034b4097e67cc27d05232849b8643866585fd0a41c7af152950f8776f4dd5579e9853733f31461c6
+  languageName: node
+  linkType: hard
+
+"hamt_plus@npm:1.0.2":
+  version: 1.0.2
+  resolution: "hamt_plus@npm:1.0.2"
+  checksum: af26ea32db03009019cc83dfa9411521a2fa16079443de1a502c9be46d8b3c975acda8ed93fc5750ef08d3186d35901e2d8cfe717dd54bea67b358601fa74e4c
   languageName: node
   linkType: hard
 
@@ -4839,6 +4848,31 @@ fsevents@~2.3.1:
   dependencies:
     picomatch: ^2.2.1
   checksum: 6b1a9341e295e15d4fb40c010216cbcb6266587cd0b3ce7defabd66fa1b4e35f9fba3d64c2187fd38fadd01ccbfc5f1b33fdfb1da63b3cbf66224b7c6d75ce5a
+  languageName: node
+  linkType: hard
+
+"recoil-persist@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "recoil-persist@npm:3.0.0"
+  peerDependencies:
+    recoil: ^0.4.0
+  checksum: e31f9020183b563658410ac9b0d831c0f0ca92ee47b4cf73a1bf97412ab4d87342b0d98045b64e00a0345639380bf7aa46810282b2343842e422899e042f6408
+  languageName: node
+  linkType: hard
+
+"recoil@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "recoil@npm:0.4.1"
+  dependencies:
+    hamt_plus: 1.0.2
+  peerDependencies:
+    react: ">=16.13.1"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: a11a93e5168d22500b8b981b0ae9c31a81987f5d7213f8be9531c3938d1b2c192ee664d94c9a70302248a292cb21ec430b0e8113f751d0ff46185ebf32c58c95
   languageName: node
   linkType: hard
 

@@ -5,7 +5,7 @@ export const ItemWrapper = styled('div', {
   display: 'flex',
   gap: '11px'
 })
-export const ItemContext = styled('p', {
+export const ItemContext = styled('div', {
   display: 'inline-flex',
   justifyContent: 'center',
   alignItems: 'center',

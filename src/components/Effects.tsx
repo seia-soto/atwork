@@ -16,26 +16,7 @@ export const Colored = styled(Base, {
   variants: {
     color: {
       blue: {
-        color: '#2a5298'
-      },
-      pink: {
-        color: '#ffdde1'
-      }
-    }
-  }
-})
-
-export const Gradient = styled(Base, {
-  '-webkit-background-clip': 'text',
-  '-webkit-text-fill-color': 'transparent',
-
-  variants: {
-    color: {
-      blue: {
-        backgroundImage: 'linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%)'
-      },
-      pink: {
-        backgroundImage: 'linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%)'
+        color: '$blue400'
       }
     }
   }
@@ -43,7 +24,7 @@ export const Gradient = styled(Base, {
 
 export const Featured = styled('a', {
   color: 'inherit',
-  borderBottom: '1px solid $black200',
+  borderBottom: '1px solid $black400',
 
   '&:hover': {
     borderBottom: '1px solid $black'

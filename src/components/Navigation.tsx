@@ -19,6 +19,7 @@ export const StyledItem = styled('a', {
   height: '100%',
   color: '$black500',
   textDecoration: 'none',
+  margin: 'auto 0',
 
   justifyContent: 'center',
   alignItems: 'center',
