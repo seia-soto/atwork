@@ -1,6 +1,6 @@
 import { createStitches } from '@stitches/react'
 
-export const { styled, createTheme, css } = createStitches({
+export const { styled, createTheme, css, globalCss } = createStitches({
   theme: {
     colors: {
       black: 'black',
@@ -24,6 +24,25 @@ export const { styled, createTheme, css } = createStitches({
       white800: 'rgba(255,255,255,.8)',
       white900: 'rgba(255,255,255,.9)'
     }
+  }
+})
+
+export const globals = globalCss({
+  '*': {
+    fontFamily: '-apple-system, BlinkMacSystemFont, system-ui, Roboto, \'Helvetica Neue\', \'Segoe UI\', \'Apple SD Gothic Neo\', \'Noto Sans KR\', \'Malgun Gothic\', sans-serif',
+    boxSizing: 'border-box',
+    wordBreak: 'keep-all',
+    wordWrap: 'break-word'
+  },
+  body: {
+    minHeight: '100%'
+  },
+  'p,h1,h2,h3,h4,h5,h6': {
+    lineHeight: '1.4em'
+  },
+  a: {
+    color: 'inherit',
+    textDecoration: 'none'
   }
 })
 

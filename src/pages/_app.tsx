@@ -1,9 +1,13 @@
 import type { AppProps } from 'next/app'
+import { globals, dark } from '../styles/theme'
 import 'normalize.css'
-import '../styles/platform.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />
+  globals()
+
+  return <div /* className={dark} */>
+    <Component {...pageProps} />
+  </div>
 }
 
 export default MyApp

@@ -6,7 +6,7 @@ export const featured = css({
   },
   '& h3': {
     fontSize: '20px',
-    color: 'rgba(0,0,0,.6)'
+    color: '$black600'
   },
 
   variants: {
@@ -14,40 +14,40 @@ export const featured = css({
       lg: {
         '& h2': {
           fontSize: '28px',
-          color: 'rgba(0,0,0,.6)'
+          color: '$black600'
         },
         '& h3': {
           fontSize: '22px',
-          color: 'rgba(0,0,0,.9)'
+          color: '$black900'
         }
       },
       xl: {
         '& h2': {
           fontSize: '36px',
-          color: 'rgba(0,0,0,.6)'
+          color: '$black600'
         },
         '& h3': {
           fontSize: '28px',
-          color: 'rgba(0,0,0,.9)'
+          color: '$black900'
         }
       },
       xxl: {
         '& h2': {
           fontSize: '56px',
-          color: 'rgba(0,0,0,.6)'
+          color: '$black600'
         },
         '& h3': {
           fontSize: '40px',
-          color: 'rgba(0,0,0,.9)'
+          color: '$black900'
         }
       },
       secondary: {
         '& h2': {
           fontSize: '24px',
-          color: 'rgba(0,0,0,.6)'
+          color: '$black600'
         },
         '& h3': {
-          color: 'rgba(0,0,0,.9)'
+          color: '$black900'
         }
       }
     },
