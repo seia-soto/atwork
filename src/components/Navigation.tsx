@@ -17,7 +17,7 @@ export const Right = styled('div', {
 export const StyledItem = styled('a', {
   display: 'inline-flex',
   height: '100%',
-  color: 'rgba(0,0,0,.5)',
+  color: '$black500',
   textDecoration: 'none',
 
   justifyContent: 'center',
@@ -26,13 +26,13 @@ export const StyledItem = styled('a', {
   transition: 'color .3s ease-in-out',
 
   '&:hover': {
-    color: 'black'
+    color: '$black'
   },
 
   variants: {
     type: {
       featured: {
-        color: 'rgba(0,0,0,.7)',
+        color: '$black700',
         fontWeight: 600,
         fontSize: '17.5px'
       }

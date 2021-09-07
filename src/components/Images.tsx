@@ -31,11 +31,11 @@ export const Featured = styled('img', {
   width: '100%',
   borderRadius: '12px',
   margin: '16px 0',
-  boxShadow: '0 0 30px -9px rgba(0,0,0,.15)',
+  boxShadow: '0 0 30px -9px $black200',
 
   transition: 'box-shadow .4s ease-in-out',
 
   '&:hover': {
-    boxShadow: '0 8px 30px -6px rgba(0,0,0,.4)'
+    boxShadow: '0 8px 30px -6px $black400'
   }
 })

@@ -16,31 +16,16 @@ const Container = styled('div', {
 })
 
 const ProfileContext = () => {
-  const theme = 'light'
-  const styles = {
-    dark: {
-      color: 'rgba(255,255,255,.85)',
-
-      '&:hover': {
-        color: 'white'
-      }
-    },
-    light: {
-      color: 'rgba(0,0,0,.65)'
-    }
-  }
-
   return (
     <Container>
       <Profile.Wrapper>
-        <Profile.Box theme={theme}>
+        <Profile.Box>
           <div>
             <h2>HoJeong Go</h2>
             <p>Sophomore software engineer</p>
           </div>
           <div>
             <Button.Icon
-              css={styles[theme]}
               icon={MdArrowForward}
               href='https://github.com/seia-soto'
             >GitHub @seia-soto</Button.Icon>

@@ -45,12 +45,12 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
 
       <Container size='md'>
         <h1>
-          Curriculum Vitae
+          Curriculum Vitae.
         </h1>
         <p>
           A sophomore software engineer.
         </p>
-        <Button.Icon theme='black' icon={MdArrowForward} href='/resume'>Back to resume</Button.Icon>
+        <Button.Icon icon={MdArrowForward} href='/resume'>Back to resume</Button.Icon>
       </Container>
       <Divider.Full />
 

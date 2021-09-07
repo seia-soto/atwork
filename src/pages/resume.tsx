@@ -253,7 +253,8 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
 
       <Container size='md'>
         <h2>
-          여기까지 읽어주셔서 정말 감사합니다.
+          여기까지 읽어주셔서 정말 감사합니다.<br />
+          여기에서부터는 기술 외 활동을 전시합니다.
         </h2>
         <p>
           언제나 많은 사람들이 저에게 조언하곤 합니다.<br />
@@ -262,6 +263,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
           언제나 바뀌어가는 모습 보실 수 있도록 스스로를 가꾸겠습니다.
         </p>
       </Container>
+      <Divider.Full />
     </>
   )
 }
