@@ -7,7 +7,7 @@ export const Wrapper = styled('div', {
   variants: {
     layout: {
       featured: {
-        backgroundImage: 'linear-gradient(to bottom, $white700, $white700), url(/images/pexels-pixabay-509922.jpg)',
+        backgroundImage: 'linear-gradient(to bottom, $white700, $white700), url(/images/pexels-pixabay-509922.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'bottom',
         backgroundPositionX: 'center'

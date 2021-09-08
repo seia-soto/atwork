@@ -3,7 +3,7 @@ import { getCssText } from '../styles/theme'
 
 const MyDocument = () => {
   return (
-    <Html>
+    <Html lang='ko'>
       <Head>
         <style id='stitches' dangerouslySetInnerHTML={{ __html: getCssText() }} />
         <link rel='preload' href='/images/avatar.webp' as='image' />
