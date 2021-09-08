@@ -12,6 +12,19 @@ const nextConfig = {
 
     return config
   },
+  headers: async () => {
+    return [
+      {
+        source: '/sitemap.xml',
+        headers: [
+          {
+            key: 'content-type',
+            value: 'application/xml'
+          }
+        ]
+      }
+    ]
+  },
   poweredByHeader: false
 }
 
