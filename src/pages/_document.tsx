@@ -1,11 +1,9 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import { getCssText } from '../styles/theme'
 
 const MyDocument = () => {
   return (
     <Html>
       <Head>
-        <style id='stitches' dangerouslySetInnerHTML={{ __html: getCssText() }} />
       </Head>
       <body>
         <Main />
