@@ -25,7 +25,8 @@ const nextConfig = {
       }
     ]
   },
-  poweredByHeader: false
+  poweredByHeader: false,
+  trailingSlash: true
 }
 
 module.exports = nextConfig

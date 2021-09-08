@@ -53,7 +53,7 @@ const Page: NextPage<IPageProps> = (props) => {
             !!props.posts.length && props.posts.map((post, key) => (
               <>
                 <StoryItem key={key}>
-                  <h2><Effects.Featured href={'/stories/' + post.title}>{post.title}</Effects.Featured></h2>
+                  <h2><Effects.Featured href={'/stories/' + post.title + '/'}>{post.title}</Effects.Featured></h2>
                   <p>{post.excerpt}</p>
                 </StoryItem>
                 <Divider.Full />
