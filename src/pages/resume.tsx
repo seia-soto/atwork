@@ -102,7 +102,7 @@ const Page: NextPage = () => {
             UI 컴포넌트 라이브러리없이도 디자인을 실현할 수 있는 능력을 보여줍니다.<br />
             큰 레이아웃을 그리며 가독성에 집중합니다.
           </p>
-          <Images.Featured alt='Preview image of atwork' src='/images/projects/atwork-preview.png' />
+          <Images.Featured alt='Preview image of atwork' src='/images/projects/atwork-preview.webp' />
 
           <div className={paragraph.featured({ level: 'lg', pad: 'featured' })}>
             <h2>
@@ -135,7 +135,7 @@ const Page: NextPage = () => {
             프론트엔드 구조에 번들링없는 MSA 구조를 제안합니다.<br />
             그리고 번들링없는 프론트엔드를 꿈꿉니다.
           </p>
-          <Images.Featured alt='GitHub screenshot of snowpack-plugin-import-map' src='/images/projects/snowpack-plugin-import-map-presentation-1.png' />
+          <Images.Featured alt='GitHub screenshot of snowpack-plugin-import-map' src='/images/projects/snowpack-plugin-import-map-presentation-1.webp' />
 
           <div className={paragraph.featured({ level: 'lg', pad: 'featured' })}>
             <h2>
@@ -161,7 +161,7 @@ const Page: NextPage = () => {
             <Button.Icon icon={MdArrowForward} href='https://www.npmjs.com/package/snowpack-plugin-import-map'>NPM에서 보기</Button.Icon>
           </div>
 
-          <Images.Featured alt='Preview image of atwork' src='/images/projects/snowpack-plugin-import-map-presentation-2.png' />
+          <Images.Featured alt='Preview image of atwork' src='/images/projects/snowpack-plugin-import-map-presentation-2.webp' />
           <div className={paragraph.featured({ level: 'lg', align: 'right', pad: 'featured' })}>
             <h2>
               번들링없는 프론트엔드<br />
@@ -193,7 +193,7 @@ const Page: NextPage = () => {
             저는 웹 애플리케이션의 외관 뿐만 아니라 구조를 이해합니다.<br />
             Clubhouse는 2021년 초 한국에서 인기를 끈 SNS 애플리케이션입니다.
           </p>
-          <Images.Featured alt='GitHub screenshot of snowpack-plugin-import-map' src='/images/projects/clubhouse-preview.png' />
+          <Images.Featured alt='GitHub screenshot of snowpack-plugin-import-map' src='/images/projects/clubhouse-preview.webp' />
 
           <div className={paragraph.featured({ level: 'lg', pad: 'featured' })}>
             <h2>
@@ -227,7 +227,7 @@ const Page: NextPage = () => {
             Typed.sh는 제가 운영하고 있는 팀 블로그입니다.<br />
             현재는 Ghost-CMS를 사용하고 있으나 이전에 마크다운 블로그로 운영되었습니다.
           </p>
-          <Images.Featured alt='GitHub screenshot of snowpack-plugin-import-map' src='/images/projects/typedsh-preview.png' />
+          <Images.Featured alt='GitHub screenshot of snowpack-plugin-import-map' src='/images/projects/typedsh-preview.webp' />
 
           <div className={paragraph.featured({ level: 'lg', pad: 'featured' })}>
             <h2>

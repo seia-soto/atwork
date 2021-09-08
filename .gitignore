@@ -1,3 +1,6 @@
+# Compiled
+*.webp
+
 # Logs
 logs
 *.log
