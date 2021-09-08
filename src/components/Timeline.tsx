@@ -1,5 +1,7 @@
+import type { FC } from 'react'
 import type { IconType } from 'react-icons'
 import { styled } from '../styles/theme'
+import * as Effects from '../components/Effects'
 
 export const ItemWrapper = styled('div', {
   display: 'flex',
@@ -38,5 +40,19 @@ export const Item = ({ icon: Icon, children }: IIconItemComponentProps) => {
         </ItemParagraph>
       </ItemContext>
     </ItemWrapper>
+  )
+}
+
+export const Link: FC<{ [keys: string]: unknown }> = (props) => {
+  return (
+    <Effects.Featured rel='noopener' target='_blank' css={{ margin: 0 }} {...props} />
+  )
+}
+
+export const Title: FC = ({ children }) => {
+  return (
+    <h2>
+      <Effects.Colored color='blue'>{children}</Effects.Colored>
+    </h2>
   )
 }

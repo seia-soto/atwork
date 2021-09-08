@@ -6,7 +6,7 @@ const MyDocument = () => {
     <Html>
       <Head>
         <style id='stitches' dangerouslySetInnerHTML={{ __html: getCssText() }} />
-        <link rel='preload' href='/images/avatar.png' as='image' />
+        <link rel='preload' href='/images/avatar.webp' as='image' />
       </Head>
       <body>
         <Main />

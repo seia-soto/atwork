@@ -15,7 +15,7 @@ const NavigationLayout: NextPage = () => {
   return (
     <Navigation.Wrapper size='md'>
       <Navigation.Item type='featured' href='/'>
-        <Images.Avatar src='/images/avatar.webp' css={{ marginRight: '12px', height: '40px' }} />
+        <Images.Avatar alt='Avatar' src='/images/avatar.webp' css={{ marginRight: '12px', height: '40px' }} />
         HoJeong Go
       </Navigation.Item>
 
