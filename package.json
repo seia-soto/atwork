@@ -5,10 +5,12 @@
   "version": "0.0.1",
   "scripts": {
     "start": "next dev",
-    "build": "NODE_ENV=production yarn optimize && next build",
+    "build": "NODE_ENV=production yarn postprocess && next build",
     "next": "next",
     "lint": "eslint --ext .js,.ts .",
-    "optimize": "node scripts/optimize"
+    "postprocess": "yarn optimize && yarn sitemap",
+    "optimize": "node scripts/optimize",
+    "sitemap": "node scripts/sitemap"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
