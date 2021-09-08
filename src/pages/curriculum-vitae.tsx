@@ -159,41 +159,8 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
         </p>
 
         <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/ohys-api'>ohys-api</Timeline.Link>: The Ohys-Raws file name and schedule parser.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/twitchd'>twitchd</Timeline.Link>: The unofficial Twitch API client.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/twverd'>twverd</Timeline.Link>: The web proxy using Vercel to stream Twitch broadcasts seamlessly over poor network status.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/boj-userspace-login'>boj-userspace-login</Timeline.Link>: A simple library to login Beakjoon Online Judge via web driver.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/boj-provider'>boj-provider</Timeline.Link>: A simple library to communicate with Beakjoon Online Judge.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/naverDict'>naverDict</Timeline.Link>: The library to use Naver dictionary API easily using Cheerio.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
           <Timeline.Link href='https://github.com/simnalamburt/awscliv2.appimage'>simnalamburt/awscliv2.appimage</Timeline.Link>: The unofficial AWS CLI v2, in a single file.
           I did automation of building via GitHub CI.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/windows-ltsc-releases'>windows-ltsc-releases</Timeline.Link>: A simple utility to grab Windows LTSC ISO download Timeline.Link from Microsoft website without sending information.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/typed-sh-202101-data-recovery'>typed-sh-202101-data-recovery</Timeline.Link>: A simple utility to recover lost Typed.sh content from web archive.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/invisibleHandshake'>invisibleHandshake</Timeline.Link>: A dead-simple utility to change MTU value of Windows network adapter.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/GreenTunnel'>GreenTunnel</Timeline.Link>: A refactored version of GreenTunnel proxy.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/chrome-discord-presence'>chrome-discord-presence</Timeline.Link>: The Chrome extension to interact with Discord without using desktop RPC application.
         </Timeline.Item>
         <Timeline.Item icon={MdWeb}>
           <Timeline.Link href='https://github.com/seia-soto/airi-sato'>airi-sato</Timeline.Link>: A multi-purpose Discord bot.
@@ -202,13 +169,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
           <Timeline.Link href='https://github.com/seia-soto/neatified'>neatified</Timeline.Link>: The Chrome extension to prevent right-click and copy blocking.
         </Timeline.Item>
         <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/switch-discord-desktop-image-source'>switch-discord-desktop-image-source</Timeline.Link>: A script to change image CDN source of Discord desktop application.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
           <Timeline.Link href='https://github.com/seia-soto/Serium'>Serium</Timeline.Link>: A multi-purpose Discord bot, prior version of airi-sato.
-        </Timeline.Item>
-        <Timeline.Item icon={MdWeb}>
-          <Timeline.Link href='https://github.com/seia-soto/Pixiv-Fetcher'>Pixiv-Fetcher</Timeline.Link>: The Pixiv content scrapper.
         </Timeline.Item>
 
         <h2>Infrastructure</h2>
@@ -260,7 +221,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
           <Timeline.Link href='https://github.com/seia-soto/shadowsocks-windows'>shadowsocks-windows</Timeline.Link>: Provided initial Korean translation of shadowsocks-windows project.
         </Timeline.Item>
 
-        <h2>Presentations</h2>
+        <h2>Presentation</h2>
 
         <Timeline.Item icon={MdPresentToAll}>
           <Timeline.Link href='https://github.com/seia-soto/presentation-unbundled-code-splitting-strategy'>Unbundled code splitting strategy</Timeline.Link>: Explains how micro frontend works.
