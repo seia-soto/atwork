@@ -5,10 +5,13 @@ import matter from 'gray-matter'
 export interface IPostFrontmatter {
   title: string
   excerpt: string
+  date: number
+  image?: string
 
   [keys: string]: unknown
 }
 export interface IPost {
+  filename: string
   frontmatter: IPostFrontmatter
   content: string
 }
@@ -24,7 +27,11 @@ export const read = (filename: string): IPost => {
 
   const frontmatter = data as IPostFrontmatter
 
+  // NOTE: Convert date
+  frontmatter.date = new Date(frontmatter.date).getTime()
+
   return {
+    filename,
     frontmatter,
     content: content.trim()
   }
@@ -34,6 +41,7 @@ export const excerpts = (): IPostFrontmatter[] => {
   const posts = list()
     .map(filename => read(filename))
     .map(post => {
+      // NOTE: Generate excerpt
       let excerpt = post.frontmatter.excerpt
 
       if (!excerpt) {
@@ -42,9 +50,11 @@ export const excerpts = (): IPostFrontmatter[] => {
 
       return {
         ...post.frontmatter,
-        excerpt
+        excerpt,
+        link: post.filename.replace('.mdx', '')
       }
     })
+    .sort((a, b) => b.date - a.date)
 
   return posts
 }
