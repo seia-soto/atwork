@@ -47,6 +47,12 @@ interface ILinkComponentProps {
 }
 
 export const Item = ({ href, ...props }: ILinkComponentProps) => {
+  if (!href) {
+    return (
+      <StyledItem {...props} />
+    )
+  }
+
   return (
     <Link href={href || ''} passHref>
       <StyledItem {...props} />
