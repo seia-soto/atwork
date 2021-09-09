@@ -2,6 +2,9 @@
 sitemap.xml
 .DS_Store
 
+# Vercel
+.vercel
+
 # Logs
 logs
 *.log

@@ -11,6 +11,8 @@ const files = readdirRecursively(root)
 console.log('(Image optimization) Files to process:')
 console.log(files)
 
+const avatarProperty = 40 * 2
+
 const main = async () => {
   for (let i = 0, l = files.length; i < l; i++) {
     const file = files[i]
@@ -19,7 +21,7 @@ const main = async () => {
 
     if (file.endsWith('avatar.png')) {
       data = await sharp(file)
-        .resize(40, 40, {
+        .resize(avatarProperty, avatarProperty, {
           fit: 'inside'
         })
         .webp()
