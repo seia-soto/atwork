@@ -106,12 +106,6 @@ const Page: NextPage<IPageProps> = (props) => {
           },
           '& blockquote': {
             color: '$black600'
-          },
-          /**
-           * Big line height value is required to comfortable view of long text
-           */
-          '& p,h1,h2,h3,h4,h5,h6,li': {
-            lineHeight: '1.6em'
           }
         }}
       >

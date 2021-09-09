@@ -10,7 +10,7 @@ export const globals = globalCss({
     wordWrap: 'break-word'
   },
   'p,h1,h2,h3,h4,h5,h6,li': {
-    lineHeight: '1.4em'
+    lineHeight: '1.6em'
   },
   a: {
     color: 'inherit',
