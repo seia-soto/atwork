@@ -15,7 +15,24 @@ const Page: NextPage = () => {
       <Head>
         <title>HoJeong Go</title>
         <meta name='description' content='A sophomore software engineer focusing for better general problem solving' />
+
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org/',
+              '@language': 'ko',
+              name: 'HoJeong Go',
+              author: {
+                '@type': 'Person',
+                name: 'HoJeong Go'
+              },
+              description: 'A sophomore software engineer focusing for better general problem solving'
+            })
+          }}
+        />
       </Head>
+
       <Header.Wrapper layout='featured'>
         <Navigation />
         <Header.Context size='lg'>

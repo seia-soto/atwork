@@ -7,6 +7,7 @@ export interface IPostFrontmatter {
   excerpt: string
   date: number
   image?: string
+  link: string
 
   [keys: string]: unknown
 }
@@ -30,6 +31,9 @@ export const read = (filename: string): IPost => {
   // NOTE: Convert date
   frontmatter.date = new Date(frontmatter.date).getTime()
 
+  // NOTE: Add link
+  frontmatter.link = filename.replace('.mdx', '')
+
   return {
     filename,
     frontmatter,
@@ -50,8 +54,7 @@ export const excerpts = (): IPostFrontmatter[] => {
 
       return {
         ...post.frontmatter,
-        excerpt,
-        link: post.filename.replace('.mdx', '')
+        excerpt
       }
     })
     .sort((a, b) => b.date - a.date)

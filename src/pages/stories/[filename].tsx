@@ -43,11 +43,31 @@ interface IPageProps {
 }
 
 const Page: NextPage<IPageProps> = (props) => {
+  const date = dayjs(props.post.frontmatter.date).format('YYYY-MM-DD')
+
   return (
     <>
       <Head>
         <title>{props.post.frontmatter.title} | Story by HoJeong Go</title>
         <meta name='description' content={props.post.frontmatter.excerpt} />
+
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org/',
+              '@id': props.post.frontmatter.link,
+              '@language': 'ko',
+              name: props.post.frontmatter.title,
+              author: {
+                '@type': 'Person',
+                name: 'HoJeong Go'
+              },
+              datePublished: date,
+              description: props.post.frontmatter.excerpt
+            })
+          }}
+        />
       </Head>
 
       <Navigation />
@@ -64,7 +84,7 @@ const Page: NextPage<IPageProps> = (props) => {
               {props.post.frontmatter.title}
             </h1>
             <p>
-              {dayjs(props.post.frontmatter.date).format('YYYY-MM-DD')}, {props.post.frontmatter.excerpt}
+              {date}, {props.post.frontmatter.excerpt}
             </p>
             {
               !props.post.frontmatter.image && (
@@ -92,7 +112,7 @@ const Page: NextPage<IPageProps> = (props) => {
            * Big line height value is required to comfortable view of long text
            */
           '& p,h1,h2,h3,h4,h5,h6,li': {
-            lineHeight: '1.7em'
+            lineHeight: '1.6em'
           }
         }}
       >
