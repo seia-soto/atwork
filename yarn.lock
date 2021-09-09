@@ -1154,6 +1154,7 @@ __metadata:
     "@types/react": ^17.0.20
     "@typescript-eslint/eslint-plugin": ^4.30.0
     "@typescript-eslint/parser": ^4.30.0
+    dayjs: ^1.10.6
     eslint: ^7.32.0
     eslint-config-next: ^11.1.2
     eslint-config-standard: ^16.0.3
@@ -2169,6 +2170,13 @@ __metadata:
   version: 3.0.3
   resolution: "dateformat@npm:3.0.3"
   checksum: ca4911148abb09887bd9bdcd632c399b06f3ecad709a18eb594d289a1031982f441e08e281db77ffebcb2cbcbfa1ac578a7cbfbf8743f41009aa5adc1846ed34
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.10.6":
+  version: 1.10.6
+  resolution: "dayjs@npm:1.10.6"
+  checksum: a79af6d19cf1e3aefc231e480037b37df50701e8d0cdbe1736fc6665b7045a159777215c5c8dd42ede7dd3c4c4f4a174d4ddd5bffca51df2a4ba0e0e25a6163c
   languageName: node
   linkType: hard
 

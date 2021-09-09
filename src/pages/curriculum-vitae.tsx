@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import {
-  MdArrowForward,
+  MdArrowBack,
   MdSchool,
   MdDomain,
   MdEmail,
@@ -37,7 +37,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
         <p>
           A sophomore software engineer.
         </p>
-        <Button.Icon icon={MdArrowForward} href='/resume'>Back to resume</Button.Icon>
+        <Button.Icon icon={MdArrowBack} href='/resume' left>Back to resume</Button.Icon>
       </Container>
       <Divider.Full />
 

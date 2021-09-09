@@ -1,6 +1,6 @@
-# Compiled
 *.webp
 sitemap.xml
+.DS_Store
 
 # Logs
 logs

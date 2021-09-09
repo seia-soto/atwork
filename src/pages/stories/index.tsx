@@ -1,22 +1,14 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { MdArrowForward } from 'react-icons/md'
-import { styled } from '../../styles/theme'
-import { Context } from '../../components/Platform'
+import dayjs from 'dayjs'
 import Container from '../../components/Container'
+import { Item } from '../../components/Chunk'
 import * as Button from '../../components/Button'
 import * as Divider from '../../components/Divider'
 import * as Effects from '../../components/Effects'
 import Navigation from '../../layouts/Navigation'
 import * as posts from '../../utils/posts'
-
-const StoryItem = styled('div', {
-  paddingBottom: '14px',
-
-  '& p': {
-    margin: 0
-  }
-})
 
 interface IPageProps {
   posts: posts.IPostFrontmatter[]
@@ -44,24 +36,22 @@ const Page: NextPage<IPageProps> = (props) => {
       </Container>
       <Divider.Full />
 
-      <Context>
-        <Container size='md' css={{ gap: '14px' }}>
-          {
-            !props.posts.length && <p>죄송합니다, 아직 준비 중이므로 스토리를 사용할 수 없습니다. 조금만 더 기다려주세요.</p>
-          }
-          {
-            !!props.posts.length && props.posts.map((post, key) => (
+      <Container size='md' css={{ gap: '14px' }}>
+        {
+          !props.posts.length && <p>죄송합니다, 아직 준비 중이므로 스토리를 사용할 수 없습니다. 조금만 더 기다려주세요.</p>
+        }
+        {
+          !!props.posts.length && props.posts
+            .map((post, key) => (
               <>
-                <StoryItem key={key}>
-                  <h2><Effects.Featured href={'/stories/' + post.title + '/'}>{post.title}</Effects.Featured></h2>
-                  <p>{post.excerpt}</p>
-                </StoryItem>
-                <Divider.Full />
+                <Item key={key}>
+                  <h3><Effects.Featured href={'/stories/' + post.link + '/'}>{post.title}</Effects.Featured></h3>
+                  <p>{dayjs(post.date).format('YYYY-MM-DD')}, {post.excerpt}</p>
+                </Item>
               </>
             ))
-          }
-        </Container>
-      </Context>
+        }
+      </Container>
     </>
   )
 }

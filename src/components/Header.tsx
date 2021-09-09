@@ -1,16 +1,18 @@
 import { styled } from '../styles/theme'
 import Container from './Container'
+import { contrast } from '../styles/filter'
 
 export const Wrapper = styled('div', {
   height: '100%',
 
+  backgroundSize: 'cover',
+  backgroundPosition: 'bottom',
+  backgroundPositionX: 'center',
+
   variants: {
     layout: {
       featured: {
-        backgroundImage: 'linear-gradient(to bottom, $white700, $white700), url(/images/pexels-pixabay-509922.webp)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'bottom',
-        backgroundPositionX: 'center'
+        backgroundImage: `${contrast}, url(/images/pexels-pixabay-509922.webp)`
       }
     }
   }
@@ -23,5 +25,13 @@ export const Context = styled(Container, {
 
   flexDirection: 'column-reverse',
 
-  color: '$black'
+  color: '$black',
+
+  variants: {
+    layout: {
+      story: {
+        height: '400px'
+      }
+    }
+  }
 })
