@@ -22,14 +22,11 @@ const Page: NextPage = () => {
             __html: JSON.stringify({
               '@context': 'https://schema.org/',
               '@type': 'Person',
-              name: 'HoJeong Go',
+              familyName: 'Go',
+              givenName: 'HoJeong',
               birthDate: '2004-07-29',
-              gender: 'male',
+              gender: 'http://schema.org/Male',
               nationality: 'Korean',
-              author: {
-                '@type': 'Person',
-                name: 'HoJeong Go'
-              },
               sameAs: [
                 'https://twitter.com/seia_soto',
                 'https://twitter.com/equfix',
