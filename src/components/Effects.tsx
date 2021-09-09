@@ -28,5 +28,17 @@ export const Featured = styled('a', {
 
   '&:hover': {
     borderBottom: '1px solid $black'
+  },
+
+  variants: {
+    invertion: {
+      true: {
+        borderBottom: '1px solid $white400',
+
+        '&:hover': {
+          borderBottom: '1px solid $white'
+        }
+      }
+    }
   }
 })

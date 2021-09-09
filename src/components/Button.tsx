@@ -25,6 +25,18 @@ export const Featured = styled(Base, {
 
   '&:hover': {
     color: '$black'
+  },
+
+  variants: {
+    invertion: {
+      true: {
+        color: '$white600',
+
+        '&:hover': {
+          color: '$white'
+        }
+      }
+    }
   }
 })
 
@@ -32,25 +44,37 @@ export const IconWrapper = styled('span', {
   display: 'inline-flex',
   justifyContent: 'center',
   alignItems: 'center',
-  paddingLeft: '8px',
+  padding: '0 8px',
   fontSize: '1.4em'
 })
 
 interface IIconButtonComponent {
   icon: IconType
   href: string
+  left?: boolean
 
   [keys: string]: unknown
 }
 
-export const Icon = ({ icon: Icon, href, children, ...props }: IIconButtonComponent) => {
+export const Icon = ({ icon: Icon, href, left, children, ...props }: IIconButtonComponent) => {
   return (
     <Link href={href} passHref>
       <Featured {...props}>
+        {
+          left && (
+            <IconWrapper>
+              <Icon />
+            </IconWrapper>
+          )
+        }
         {children}
-        <IconWrapper>
-          <Icon />
-        </IconWrapper>
+        {
+          !left && (
+            <IconWrapper>
+              <Icon />
+            </IconWrapper>
+          )
+        }
       </Featured>
     </Link>
   )
