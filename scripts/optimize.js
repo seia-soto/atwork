@@ -24,7 +24,7 @@ const main = async () => {
         })
         .webp()
     } else {
-      await sharp(files[i])
+      data = await sharp(files[i])
         .webp()
         .toBuffer()
     }
