@@ -9,12 +9,15 @@ export const globals = globalCss({
     wordBreak: 'keep-all',
     wordWrap: 'break-word'
   },
-  'p,h1,h2,h3,h4,h5,h6': {
+  'p,h1,h2,h3,h4,h5,h6,li': {
     lineHeight: '1.4em'
   },
   a: {
     color: 'inherit',
     textDecoration: 'none'
+  },
+  'pre,code': {
+    overflowX: 'auto'
   }
 })
 
