@@ -13,9 +13,21 @@ console.log(files)
 
 const main = async () => {
   for (let i = 0, l = files.length; i < l; i++) {
-    const data = await sharp(files[i])
-      .webp()
-      .toBuffer()
+    const file = files[i]
+
+    let data
+
+    if (file.endsWith('avatar.png')) {
+      data = await sharp(file)
+        .resize(40, 40, {
+          fit: 'inside'
+        })
+        .webp()
+    } else {
+      await sharp(files[i])
+        .webp()
+        .toBuffer()
+    }
 
     fs.writeFileSync(removeExtension(files[i]) + '.webp', data)
   }
