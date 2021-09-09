@@ -23,6 +23,7 @@ const main = async () => {
           fit: 'inside'
         })
         .webp()
+        .toBuffer()
     } else {
       data = await sharp(files[i])
         .webp()
