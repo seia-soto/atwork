@@ -21,13 +21,21 @@ const Page: NextPage = () => {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org/',
-              '@language': 'ko',
+              '@type': 'Person',
               name: 'HoJeong Go',
+              birthDate: '2004-07-29',
+              gender: 'male',
+              nationality: 'Korean',
               author: {
                 '@type': 'Person',
                 name: 'HoJeong Go'
               },
-              description: 'A sophomore software engineer focusing for better general problem solving'
+              sameAs: [
+                'https://twitter.com/seia_soto',
+                'https://twitter.com/equfix',
+                'https://www.linkedin.com/in/hojeong-go/',
+                'https://www.instagram.com/hojeong.go/'
+              ]
             })
           }}
         />

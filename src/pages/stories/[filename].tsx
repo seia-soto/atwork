@@ -56,15 +56,14 @@ const Page: NextPage<IPageProps> = (props) => {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org/',
-              '@id': props.post.frontmatter.link,
-              '@language': 'ko',
-              name: props.post.frontmatter.title,
+              '@type': 'BlogPosting',
+              headline: props.post.frontmatter.title,
+              description: props.post.frontmatter.excerpt,
               author: {
                 '@type': 'Person',
                 name: 'HoJeong Go'
               },
-              datePublished: date,
-              description: props.post.frontmatter.excerpt
+              datePublished: date
             })
           }}
         />

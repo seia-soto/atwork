@@ -20,6 +20,24 @@ const Page: NextPage<IPageProps> = (props) => {
       <Head>
         <title>Stories. by HoJeong Go</title>
         <meta name='description' content='그동안 많은 솔루션을 만들면서 많은 일을 겪었습니다. 당시에 제가 어떤 고민을 했는지 들어보세요.' />
+
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org/',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Stories',
+                  item: 'https://seia.io/stories'
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <Navigation />

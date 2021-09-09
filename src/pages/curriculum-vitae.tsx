@@ -26,6 +26,24 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
       <Head>
         <title>Curriculum Vitae. by HoJeong Go</title>
         <meta name='description' content='A sophomore software engineer.' />
+
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org/',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Curriculum Vitae',
+                  item: 'https://seia.io/curriculum-vitae'
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <Navigation />

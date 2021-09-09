@@ -16,6 +16,24 @@ const Page: NextPage = () => {
       <Head>
         <title>Resume. by HoJeong Go</title>
         <meta name='description' content='단순한 개발자가 아니라 모두와 편하게 말하며 솔루션을 제공할 수 있는 사람이 되고자 합니다.' />
+
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org/',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Resume',
+                  item: 'https://seia.io/resume'
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <Navigation />
