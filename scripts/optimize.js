@@ -4,9 +4,14 @@ const sharp = require('sharp')
 const { readdirRecursively, removeExtension } = require('./_utils')
 
 const root = path.join(process.cwd(), 'public', 'images')
+const supported = [
+  'png',
+  'jpg',
+  'jpeg'
+]
 
 const files = readdirRecursively(root)
-  .filter(file => !file.endsWith('.webp'))
+  .filter(file => supported.indexOf(file.split('.').pop().toLowerCase()) >= 0)
 
 console.log('(Image optimization) Files to process:')
 console.log(files)

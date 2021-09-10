@@ -1,0 +1,172 @@
+---
+title: 번들링없는 프론트엔드로의 전환
+excerpt: 번들링없는 프론트엔드는 HTTP/2 스펙과 함께 웹 브라우저의 캐싱 전략을 최대한으로 끌어올릴 수 있게 해줍니다.
+image:
+date: 2021-09-10
+---
+
+![Slide 2](/images/blog/unbundled-frontend/1.webp)
+
+**개요**
+
+현대 프론트엔드는 번들링이라는 작업을 통해 결과물을 최적화했습니다.
+번들링은 기본적으로 프론트엔드에서 비교적 낮은 성능의 모바일과 3G 네트워크 등 가용 트래픽이 적은 상황에서 잘 대응함과 동시에 적은 트래픽으로 배포할 수 있게 도와주었습니다.
+그러나 번들링을 이용하지 않아도 생기는 명확한 장점들이 ES Module 시스템이 보편화된 이후에 발견되었습니다.
+번들링된 에셋과는 다르게 ES Module은 모듈 구조를 명확하게 나타내고 있기 때문에 웹 브라우저 입장에서 굉장히 캐싱 전략을 활용하기 쉬워진다는 것입니다.
+
+**에셋 다운로드**
+
+<Button theme='black' icon={MdFileDownload} href='https://github.com/seia-soto/presentation-unbundled-code-splitting-strategy/raw/main/Unbundled%20code%20splitting%20strategy.pdf' left download>PDF 다운로드</Button>
+<Button theme='black' icon={MdFileDownload} href='https://github.com/seia-soto/presentation-unbundled-code-splitting-strategy/raw/main/Unbundled%20code%20splitting%20strategy.pptx' left download>Powerpoint 다운로드</Button>
+
+본문 이미지를 제외한 파일은 [GitHub에서 제공](https://github.com/seia-soto/presentation-unbundled-code-splitting-strategy)됩니다.
+
+----
+
+## Webpack의 방식
+
+Webpack은 지금도 그리고 이전에는 더욱 더 중요한 역할을 했던 번들러입니다.
+더군다나 2G와 3G가 모바일 네트워크가 주축이 되었던 과거에는 더 그랬습니다.
+스크립트 파일이 많아지면 많아질수록 네트워크 부담이 가중되어서 성능이 낮은 이전 네트워크에서는 빠르게 웹 사이트를 전송하는 것이 쉽지 않았기 때문입니다.
+
+![Slide 2](/images/blog/unbundled-frontend/2.webp)
+
+## 낮은 성능의 네트워크 시스템과 Chunking
+
+Webpack은 여기에서 코드와 의존성을 포함해 사용되는 파일을 묶고(Bundling) 필요없는 부분은 잘라(Tree shaking) 최적화된 빌드를 대신 제공하도록 했습니다.
+그리고 각 페이지마다 생성된 Chunk는 한 공유되는 코드와 페이지에서 단독으로 사용되는 코드를 분리해 최대한 다운로드 크기를 줄이기도 합니다.
+
+![Slide 3](/images/blog/unbundled-frontend/3.webp)
+
+## 웹 애플리케이션 아키텍쳐의 변화
+
+하지만 웹은 계속해서 앞으로 움직이며 HTTP/2 프로토콜의 보급이 가속화되고 충분히 보편화되었습니다.
+게다가 개발자 경험은 ESBuild와 SWC 등의 컴파일러(번들링 기능을 포함, 작성 기준 SWC는 Vercel에서 개발 중)로 상당히 향상되었습니다.
+느린 Node.JS 대신 Golang이나 Rust-lang 등 빠른 컴파일 언어를 사용하여 JavaScript의 컴파일 속도를 배의 배로 만들었습니다.
+
+또 HTTP/2는 하나의 커넥션 안에서 여러 개의 Payload를 분할 전송할 수 있도록 설계되어서 많은 파일이 있음에도 불구하고
+서버와 클라이언트 사이의 속도를 최적화하는데에 성공했습니다.
+이것은 HTTP/2의 보급과 네트워크 성능의 전반적인 향상을 고려했을 때 번들링에서 Chunking의 중요도가 낮아지는 지점입니다.
+
+![Slide 4](/images/blog/unbundled-frontend/4.webp)
+
+## 번들러의 경험
+
+실제로 번들러를 사용하면서 개발자 경험 또한 그렇게 좋지는 않습니다.
+필요했지만 시간과 자원을 많이 소모하는 고비용의 작업이었습니다.
+그리고 저는 한 가지 더, Chunking된 코드는 한 번 배포되고 캐싱되면 물론 괜찮지만 현재 많은 회사에서 도입한 CI 및 CD의 상황을 고려했을 때
+잦은 배포로 인하여 여러 의존성이 섞일 수 있는 Chunk 데이터는 업데이트 시에 되려 더 많은 네트워크 비용을 소모할 수 있다고 생각합니다.
+
+![Slide 5](/images/blog/unbundled-frontend/5.webp)
+
+## 실제 프로젝트에서 확인
+
+그리고 Chunk를 통해 의존성 캐시가 와해될 수 있다는 가설을 실제 프로젝트에 적용해보았습니다.
+저는 기본적으로 번들러를 갖추지 않고 있는 프론트엔드 개발 도구인 Snowpack을 사용하고자 합니다.
+
+먼저 Webpack을 Snowpack에 설정하고 아래 사진과 같이 Redirect 문 한 줄을 제거한 다음 어떤 변화가 일어나는지 확인해보았습니다.
+
+> Ohys-FE 프로젝트는 현재 종료되었습니다.
+
+```javascript
+/** @type {import("snowpack").SnowpackUserConfig } */
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+module.exports = {
+  plugins: [
+    [
+      '@snowpack/plugin-webpack',
+      {
+        target: [
+          'web',
+          'es5'
+        ],
+        sourceMap: false,
+        extendConfig: config => {
+          config.plugins.push(new CleanWebpackPlugin({
+            dry: false,
+            verbose: true,
+            cleanStaleWebpackAssets: true,
+            protectWebpackAssets: true
+          }))
+
+          return config
+        }
+      }
+    ]
+  ]
+}
+```
+
+![Slide 6](/images/blog/unbundled-frontend/6.webp)
+
+### Webpack에서 캐시 재생성
+
+Webpack에서는 번들링을 통하여 스크립트 파일에 페이지 코드뿐만 아니라 모든 의존성이 포함되었습니다.
+그래서 실제로 `Redirect` 모듈 한 줄만 변경하였음에도 불구하고 200 kB 넘게 다시 다운로드해야 했습니다.
+
+![Slide 7](/images/blog/unbundled-frontend/7.webp)
+
+### Webpack없이 캐시 재생성
+
+이제 Webpack을 Snowpack 설정에서 제외하고 다시 빌드하여 결과물을 확인해보았습니다.
+Webpack과 테스트할 때와 같이 `Redirect` 한 줄만 빼는 과정을 거쳤습니다.
+그리고 실제로 `Redirect`이 포함되었었던 파일만 변경되었고 나머지는 전부 `304` 코드를 반환하며 내부 브라우저 캐시를 이용하도록 합니다.
+기존에 Webpack을 사용했을 때에는 200 kB만큼 다운로드해야 했지만 이제는 단지 1 kB만 다운로드받으면 되는 것입니다.
+그리고 적어진 용량만큼 배포를 더 많이 해도 클라이언트와 서버 모두 더 적은 비용을 사용할 수 있을 것입니다.
+
+![Slide 8](/images/blog/unbundled-frontend/8.webp)
+
+## Micro-frontend의 제안
+
+마이크로 프론트엔드는 생각보다 꽤 이전부터 제안되어온 개념입니다.
+원래는 하나의 큰 틀에 여러가지 라이브러리를 사용한다는 의미로 쓰였고 의외로 많이 찾아볼 수 있는 아키텍쳐입니다.
+하지만 제가 여기에서 말하고자 하는 마이크로 프론트엔드는 약간 다릅니다.
+라이브러리가 공유되는 환경에서 CDN으로 의존성을 묶는 것입니다.
+
+이렇게 되면 서로 공통된 라이브러리를 사용하면서 애플리케이션 코드만 업데이트하게 되어 효율성이 극대화됩니다.
+저는 처음 zhoukekestar님이 개발한 플러그인에서 회사별로 다를 수 있는 CDN Url을 적용하도록 하였습니다.
+
+또 Snowpack은 Skypack CDN과 같은 곳에서 개발되었습니다.
+Skypack과 CDNjs 등 여러 CDN을 공통적으로 사용하는 애플리케이션은 많아질수록 더 빨라질 것입니다.
+
+<Button theme='black' icon={MdArrowForward} href='https://www.npmjs.com/package/snowpack-plugin-import-map'>NPM에서 snowpack-plugin-import-map 보기</Button>
+
+ES Modules의 도움으로 URL에서 직시 의존성을 스트리밍할 수 있습니다.
+
+**빌드 후 코드**
+
+```javascript
+// After
+import React from "https://cdn.skypack.dev/react@^16.13.1";
+import ReactDOM from "https://cdn.skypack.dev/react-dom@^16.13.1";
+
+ReactDOM.render(
+  React.createElement("h1", null, "Hello world!"),
+  document.getElementById("root")
+);
+```
+
+![Slide 9](/images/blog/unbundled-frontend/9.webp)
+
+## MOVE THE WEB FORWARD
+
+이러한 가설에도 불구하고 여전히 오래된 웹 브라우저와 저대역폭의 3G 네트워크는 준비를 늦추고 있습니다.
+여전히 서비스에서의 성공적인 웹 애플리케이션 배포를 위해서라면 현재 아키텍쳐를 위해 조금 더 기다려야 한다는 것입니다.
+
+- HTTP/2와 HTTPS의 구현 보편화
+- 여전히 모바일 네트워크는 믿을만하지 않음
+- JavaScript를 비활성화하는 사용자와 IE 사용자
+
+![Slide 10](/images/blog/unbundled-frontend/10.webp)
+
+## 감사합니다
+
+읽어주셔서 감사합니다.
+저는 앞으로 새로운 프론트엔드가 웹 환경에서 더욱 진보적일 수 있도록 노력하고 안정적으로 현 세대 제품에 정착할 수 있도록 노력하고자 합니다.
+
+개념 외적으로도 이 프로젝트에서는 TypeScript 적용 그리고 테스트 코드 등도 확인해보실 수 있습니다.
+
+<Button theme='black' icon={MdArrowForward} href='https://github.com/seia-soto/snowpack-plugin-import-map'>GitHub 소스코드 보기</Button>
+
+![Slide 11](/images/blog/unbundled-frontend/11.webp)

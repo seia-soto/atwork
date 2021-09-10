@@ -2,7 +2,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
-import { MdArrowBack, MdList } from 'react-icons/md'
+import { MdArrowForward, MdArrowBack, MdFileDownload, MdList } from 'react-icons/md'
 import dayjs from 'dayjs'
 import { styled } from '../../styles/theme'
 import { Invertion } from '../../components/Platform'
@@ -32,7 +32,13 @@ const components = {
   a: Effects.Featured,
   hr: Divider.Full,
   img: Images.Featured,
-  pre: Code
+  pre: Code,
+  Button: Button.Icon
+}
+const scope = { // MdArrow icons are used in same page, final cost will be MdFileDownload.
+  MdArrowForward,
+  MdArrowBack,
+  MdFileDownload
 }
 
 interface IPageProps {
@@ -113,7 +119,7 @@ const Page: NextPage<IPageProps> = (props) => {
             props.notFound && <p>이 스토리는 존재하지 않습니다. 다른 스토리를 읽어보세요.</p>
           }
           {
-            !props.notFound && <MDXRemote {...props.source} components={components} />
+            !props.notFound && <MDXRemote {...props.source} components={components} scope={scope} />
           }
         </Container>
       <Divider.Full />
@@ -129,6 +135,10 @@ const Page: NextPage<IPageProps> = (props) => {
             프로젝트 스토리를 읽어주셔서 정말 감사합니다.<br />
             다른 스토리도 읽어보시겠어요?
           </h2>
+          <p>
+            프로젝트 스토리는 개발을 진행하면서 새롭게 제시하는 아이디어와
+            개발하는 중 가치있었던 경험을 적어나가는 곳입니다.
+          </p>
           <Chunk.Group direction='column' align='left' css={{ gap: '6px' }}>
             <Button.Icon theme='black' icon={MdArrowBack} href='/stories' left invertion>Story 목록으로 돌아가기</Button.Icon>
             <Button.Icon theme='black' icon={MdList} target='_blank' href='https://typed.sh/' left invertion>Typed.sh에서 더 많은 글 보기</Button.Icon>
@@ -173,11 +183,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   }
 
   const post = posts.read(filename)
-
-  const start = Math.floor(Math.random() * 3)
   const excerpts = posts.excerpts()
+    .sort(() => 0.5 - Math.random())
     .filter(item => item.title !== post.frontmatter.title)
-    .slice(start, start + 3)
+    .slice(0, 3)
 
   return {
     props: {
