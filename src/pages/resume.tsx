@@ -67,7 +67,7 @@ const Page: NextPage = () => {
         <p>모든 커뮤니케이션은 개인 의견이며 특정 단체를 대변하지 않습니다.</p>
 
         <Timeline.Item icon={MdEmail}>
-          {'\'s\''} + {'\'eia@outlook\''} + {'\'.kr\''}
+          seia@outlook.kr
         </Timeline.Item>
 
         <Timeline.Title>Status</Timeline.Title>

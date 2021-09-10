@@ -95,7 +95,7 @@ const Page: NextPage<IPageProps> = (props: IPageProps) => {
         <p>Every communication is personal and does not represent any organization.</p>
 
         <Timeline.Item icon={MdEmail}>
-          {'\'s\''} + {'\'eia@outlook\''} + {'\'.kr\''}
+          seia@outlook.kr
         </Timeline.Item>
 
         <Timeline.Title>Status</Timeline.Title>

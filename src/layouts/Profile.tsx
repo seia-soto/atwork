@@ -27,8 +27,8 @@ const ProfileContext = () => {
           <div>
             <Button.Icon
               icon={MdArrowForward}
-              href='https://github.com/seia-soto'
-            >GitHub @seia-soto</Button.Icon>
+              href='mailto:seia@outlook.kr'
+            >seia@outlook.kr</Button.Icon>
           </div>
         </Profile.Box>
       </Profile.Wrapper>
