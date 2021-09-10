@@ -21,18 +21,9 @@ const Page: NextPage = () => {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org/',
-              '@type': 'Person',
-              familyName: 'Go',
-              givenName: 'HoJeong',
-              birthDate: '2004-07-29',
-              gender: 'http://schema.org/Male',
-              nationality: 'Korean',
-              sameAs: [
-                'https://twitter.com/seia_soto',
-                'https://twitter.com/equfix',
-                'https://www.linkedin.com/in/hojeong-go/',
-                'https://www.instagram.com/hojeong.go/'
-              ]
+              '@type': 'WebSite',
+              url: 'https://seia.io',
+              description: 'A sophomore software engineer focusing for better general problem solving'
             })
           }}
         />
