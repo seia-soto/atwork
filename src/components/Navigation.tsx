@@ -4,8 +4,7 @@ import Container from './Container'
 
 export const Wrapper = styled(Container, {
   display: 'flex',
-  padding: '12px',
-  background: 'transprent'
+  padding: '12px'
 })
 
 export const Right = styled('div', {

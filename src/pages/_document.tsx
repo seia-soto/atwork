@@ -10,6 +10,11 @@ const MyDocument = () => {
 
         <script async defer data-domain='seia.io' src='https://trkrpt-submit.cidx.rpta1-c6h16.seia.io/a' />
         <script async defer data-domain='seia.io' src='https://trkrpt-submit.cidx.rpta12-c3h5.seia.io/a' />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: 'w=window;if(w.navigator.userAgent.indexOf("Trident")>=0){w.location="/unsupported.html"}'
+          }}
+        />
       </Head>
       <body>
         <Main />
