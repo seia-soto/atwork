@@ -1,6 +1,6 @@
 import { styled } from '../styles/theme'
 
-const Container = styled('div', {
+const Container = styled('article', {
   margin: '0 auto',
   width: '100%',
   padding: '20px',

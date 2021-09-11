@@ -1,6 +1,6 @@
 import { styled } from '../styles/theme'
 
-export const Item = styled('div', {
+export const Item = styled('section', {
   paddingBottom: '14px',
 
   '& p': {
@@ -8,7 +8,7 @@ export const Item = styled('div', {
   }
 })
 
-export const Group = styled('div', {
+export const Group = styled('section', {
   display: 'flex',
   justifyContent: 'space-around',
 

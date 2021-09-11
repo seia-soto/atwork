@@ -3,7 +3,7 @@ import type { IconType } from 'react-icons'
 import { styled } from '../styles/theme'
 import * as Effects from '../components/Effects'
 
-export const ItemWrapper = styled('div', {
+export const ItemWrapper = styled('li', {
   display: 'flex',
   gap: '11px'
 })
