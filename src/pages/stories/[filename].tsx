@@ -119,7 +119,7 @@ const Page: NextPage<IPageProps> = (props) => {
             props.notFound && <p>이 스토리는 존재하지 않습니다. 다른 스토리를 읽어보세요.</p>
           }
           {
-            !props.notFound && <MDXRemote {...props.source} components={components} scope={scope} />
+            !props.notFound && <MDXRemote {...props.source} components={components} scope={scope} lazy />
           }
         </Container>
       <Divider.Full />
