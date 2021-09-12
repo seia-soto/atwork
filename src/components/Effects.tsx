@@ -1,6 +1,6 @@
 import { styled } from '../styles/theme'
 
-export const Base = styled('strong', {})
+export const Base = styled('span', {})
 
 /* Thanks to: https://stackoverflow.com/a/64127605 */
 export const Highlighter = styled(Base, {
