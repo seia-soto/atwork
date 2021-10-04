@@ -60,8 +60,8 @@ const Page: NextPage = () => {
             계속해서 여러 커뮤니티의 도움을 받아 성장했고<br />
             그리고 지금 스스로 검색하여 서비스를 만들고 있습니다.
           </h3>
+          <Button.Icon theme='black' icon={MdArrowForward} href='https://github.com/seia-soto'>GitHub에서 활동 보기</Button.Icon>
         </div>
-        <Button.Icon theme='black' icon={MdArrowForward} href='https://github.com/seia-soto'>GitHub에서 활동 보기</Button.Icon>
 
         <div className={paragraph.featured({ align: 'right' })}>
           <h1>
@@ -74,6 +74,7 @@ const Page: NextPage = () => {
             이를 통해서 개발자라는 직업군에 있는 딜레마를 극복하고<br />
             더 많은 사람들과 성공적으로 문제를 해결하길 원합니다.
           </h3>
+          <Button.Icon theme='black' icon={MdArrowForward} href='https://github.com/seia-soto'>GitHub에서 활동 보기</Button.Icon>
         </div>
       </Container>
     </>

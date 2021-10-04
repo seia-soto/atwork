@@ -14,10 +14,12 @@ const NavigationLayout: NextPage = () => {
 
   return (
     <Navigation.Wrapper size='md'>
-      <Navigation.Item type='featured' href='/'>
-        <Images.Avatar alt='Avatar' src='/images/avatar.webp' css={{ marginRight: '12px', height: '40px' }} height='40' width='40' />
-        HoJeong Go
-      </Navigation.Item>
+      <Navigation.Group>
+        <Navigation.Item type='featured' href='/'>
+          <Images.Avatar alt='Avatar' src='/images/avatar.webp' css={{ height: '40px', marginRight: '12px' }} height='40' width='40' />
+          HoJeong Go
+        </Navigation.Item>
+      </Navigation.Group>
 
       <Navigation.Right>
         <Navigation.Item as='div' css={{ fontSize: '1.2em', cursor: 'pointer' }} onClick={toggleLight}>

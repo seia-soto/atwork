@@ -7,12 +7,16 @@ export const Wrapper = styled(Container, {
   padding: '12px'
 })
 
-export const Right = styled('div', {
+export const Group = styled('div', {
   display: 'flex',
   alignItems: 'baseline',
-  marginLeft: 'auto',
-  gap: '14px'
+  gap: '12px'
 })
+
+export const Right = styled(Group, {
+  marginLeft: 'auto'
+})
+
 export const StyledItem = styled('a', {
   display: 'inline-flex',
   height: '100%',
