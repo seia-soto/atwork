@@ -16,8 +16,18 @@ export const globals = globalCss({
     color: 'inherit',
     textDecoration: 'none'
   },
-  'pre,code': {
+  'pre': {
     overflowX: 'auto'
+  },
+  'pre>code': {
+    fontFamily: '\'JetBrains Mono\', monospace !important',
+    '-webkit-font-feature-settings': '"liga" on, "calt" on',
+    '-webkit-font-smoothing': 'antialiased',
+    textRendering: 'optimizeLegibility',
+
+    // Safari fix
+    display: 'inline-block',
+    '-webkit-overflow-scrolling': 'touch'
   }
 })
 
