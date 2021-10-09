@@ -14,7 +14,7 @@ date: 2021-10-07
 
 ## 성능과 자원 사이, 더 중요한 것은?
 
-가장 먼저 설정해야 할 것은 "규모" 자체입니다.
+가장 먼저 설정해야 할 것은 "규모" 그 자체입니다.
 그 이유는 애플리케이션을 개발하는데에 있어서 그 규모는 어떤 스택을 사용할지 그리고 그 스택들에 따라서 개발 시간까지 달라지기 때문입니다.
 물론 그 어떤 애플리케이션이라도 최상의 솔루션을 사용한다면 좋겠지만 제품이 서비스에 도달하는 시간을 고려했을 때 그것은 단순히 성능을 위한 억지에 불과합니다.
 서비스에 도달하지 못하는 제품은 사용하지 못하게 되고 결국 제품은 사용자를 만나지 못한 채 종료될 것입니다.
@@ -96,8 +96,7 @@ date: 2021-10-07
 # Blueprint
 
 생각을 했으면 이제 이것을 실현시켜볼 차례입니다.
-여전히 "규모"를 생각하는 것이 1순위이고 기존에 제가 작성하던 백엔드와는 분명히 두드러지는 몇 가지 차이점이 있었습니다.
-그리고 마지막으로 제가 개인적으로 이루어보고 싶었던 것들이 더 있습니다.
+여전히 "규모"를 생각하는 것이 1순위이고 기존에 제가 작성하던 백엔드와는 다르게 한 발 더 나아가 생각해야 하는 영역들이 있었습니다.
 
 ## Multi-Master 데이터베이스 아키텍쳐
 
@@ -122,18 +121,15 @@ date: 2021-10-07
 이러한 방식을 사용하면 기존 `single master` 상황과는 별개로 데이터가 각각의 노드에 쌓을 수 있으므로 수평적 확장이 쉬워지고 데이터의 액세스가 한 서버 내에서만 이루어지지 않으므로 IO 로드 또한 분산시킬 수 있습니다.
 애플리케이션이 얼마나 커질지 모르기 때문에 모든 노드끼리 서로 완전히 동기화를 보장하는 것보다는 각각의 노드에서 데이터를 서로 분담하는 것이 유리합니다.
 
-아키텍쳐가 변동을 하면서 동시에 같이 변화하는 영역들이 있습니다.
-
-### #1 Primary Key 결정하기
-
-그 중 첫 번째는 바로 Primary Key에 관한 것입니다.
+아키텍쳐가 변동을 하면서 동시에 같이 변화 해야만 하는 영역이 있습니다.
+바로 Primary Key에 관한 것입니다.
 Primary Key는 거의 모든 DBMS에서 효율적인 데이터 로드를 위해 인덱스 등을 설정하는데에 사용되는 것으로 Primary Key의 데이터 형식뿐만 아니라 그것이 차지하는 용량 등이 큰 변수가 됩니다.
 그 외에도 정렬이 가능한지 가능하지 않은지 등의 여부에 따라서 효율성이 극도로 차이나는 경우도 있습니다.
 
 가장 중요한 것은 겹치지 않는 것으로 `active-active` 구조인 `multi-master`에서는 단순히 `auto_increase`(이하 `AI`)를 사용하는 것은 지연도와 성능면에서 큰 단점으로 작용합니다.
 그리고 대규모의 데이터를 효율적으로 저장하기 위해서 Primary Key는 시간 등의 다른 데이터 또한 담을 수 있어야 합니다.
 
-#### UUID, 128 bits string
+### UUID, 128 bits string
 
 Primary Key의 후보로 처음 고려한 것은 문자열, 그 중에서도 UUID입니다.
 UUID는 32비트인 `int`보다 훨씬 더 큰 128비트의 공간을 차지하는 문자열로 고유 ID를 표현하기 위해 만들어졌습니다.
@@ -162,7 +158,7 @@ UUID는 32비트인 `int`보다 훨씬 더 큰 128비트의 공간을 차지하�
 이는 정말로 난수를 만드는 알고리즘이 아니라 난수처럼 보이는 일련의 숫자 분포를 반환하기 때문입니다.
 그 과정이 어찌한들 이는 공식적으로 정의된 프로토콜이며 중복 데이터가 생길 가능성이 매우 높기 때문에 고려 대상이 아닙니다.
 
-#### nanoid, *string
+### nanoid, *string
 
 그 무작위를 더욱 고르게 하기 위하여 난수 함수 대신 하드웨어 소음을 수집하여 난수를 생성하는 nanoid가 있습니다.
 nanoid는 처음 Node.JS 구현을 시작으로 현재는 많은 프로그래밍 언어에서 광범위하게 사용되고 있습니다.
@@ -182,12 +178,359 @@ uuid v4                    1,662,373 ops/sec
 
 하지만 nanoid는 UUID처럼 최소한의 순서를 나타낼 수 있는 시간 데이터 또한 가지고 있지 않기 때문에 인덱싱 비용의 증가로 추후 기능 구현에서 걸림돌이 될 것이 분명하므로 아쉽지만 고려 대상이 될 수 없습니다.
 
-<Button theme='black' icon={MdArrowForward} href='https://www.npmjs.com/package/nanoid'>NPM에서 nanoid 보기</Button>
+<Button icon={MdArrowForward} href='https://www.npmjs.com/package/nanoid'>NPM에서 nanoid 보기</Button>
 
-#### Snowflake, 64bit int (BigInt)
+### Snowflake, 64bit int (BigInt)
 
-그리고 문자열의 Primary Key 후보들과 다르게 64비트 정수로 표현되는 후보에는 Snowflake가 있습니다.
+문자열의 Primary Key 후보들과 다르게 64비트 정수로 표현되는 후보에는 Snowflake가 있습니다.
+
 사실은 처음에 Snowflake를 사용하지 않으려고 했습니다.
 그 이유는 단순합니다.
-Node.JS에서 다루는 과정이 굉장히 귀찮기 때문입니다.
-자칫 이 것이 단순히 BigInt라는 객체로 표현되지 않느냐라고 말할 수도 있지만 같은 Number를 다루는데 같은 방식을 차용할 수 없다는 것은 동시에 굉장한 스트레스가 될 것입니다.
+Node.JS에서 BigInt를 다루는 과정은 굉장히 귀찮습니다.
+자칫 이 것이 단순히 BigInt라는 객체로 표현되지 않느냐라고 말할 수도 있지만 같은 Number를 다루는데 같은 방식을 차용할 수 없다는 것은 동시에 굉장한 스트레스가 될 것이라고 생각했기 때문입니다.
+
+하지만 곧 검색을 하고 자료를 정리하면서 제 생각과는 다르게 Snowflake가 가장 적합한 선택이라는 것을 알 수 있었습니다.
+
+**첫 번째로 Snowflake는 시간순 정렬이 가능합니다.**
+시간순으로 정렬이 가능한 이유는 64비트 중에 Timestamp를 그대로 가지는 비트들이 포함되어 있기 때문인데 이는 몇 가지 데이터 효율성을 가져옵니다.
+현재 대부분의 데이터베이스 테이블 스키마는 `created_at`과 같은 컬럼을 가지는데 이를 Identifier에 포함하여 그대로 재사용할 수 있습니다.
+이러한 시간 데이터를 사용하는 것은 대부분 애플리케이션이지 데이터베이스가 아닙니다.
+또 숫자로 되어 있으니 데이터베이스에서도 큰 노력을 들이지 않고도 활용이 가능합니다.
+
+```sql
+CREATE TABLE table_name (
+       id INT UNIQUE NOT NULL,
+       ...
+
+       created_at DATETIME NOT NULL
+);
+```
+
+예를 들어서 Discord의 Snowflake는 다음과 같은 형태로 이루어져 있습니다.
+
+```
+111111111111111111111111111111111111111111 11111 11111 111111111111
+64                                         22    17    12          0
+```
+
+그리고 22 + 1번째 비트부터는 시간 데이터이니 다음과 같이 시간 데이터의 추출이 가능해집니다.
+
+```javascript
+uid << 22
+```
+
+**두 번째로 Snowflake는 스케일링이 가능합니다.**
+많은 기업들이 사용하였다고 단순히 시스템을 차용하거나 신뢰해도 되는 것은 아닙니다.
+하지만 Snowflake는 그 구조적으로 설정이 잘 된 경우에 한해서 완전히 ID가 중복될 가능성을 배제할 수 있습니다.
+단순히 Timestamp나 겹치는 ID를 가졌다는 것을 넘어 클러스터마다 고유한 ID를 부여하여 포함시키기 때문에 이는 서버 간의 중복된 ID를 생성할 가능성을 없애줍니다.
+이 말은 타 서버 간에 동시성 고려를 하지 않아도 된다는 뜻이기도 합니다.
+
+```
+111111111111111111111111111111111111111111 11111 11111 111111111111
+64                                         22    17    12          0
+
+^ Time
+                                           ^ Internal Worker ID
+                                                 ^ Internal PID
+                                                       ^ Incremental sequence
+```
+
+최종적으로 NPM에서 [nodejs-snowflake](https://www.npmjs.com/package/nodejs-snowflake)라는 패키지를 발견했습니다.
+그리고 이 패키지가 `string`으로도 바로 Snowflake를 만들 수 있다는 것을 알게 되었고 즉시 사용하는 것으로 결정하였습니다.
+
+```javascript
+const { UniqueID } = require('nodejs-snowflake');
+
+const uid = new UniqueID({
+    returnNumber: true
+});
+
+const ID = uid.getUniqueID(); // This id is in javascript bigint format
+```
+
+## PubSub 아키텍쳐와 대규모 웹 소켓 관리
+
+두 번째로 PubSub 아키텍쳐를 손에 꼽았습니다.
+사실은 데이터베이스보다 우선순위가 높은 문제 중 하나인데 가장 큰 이유로는 불특정 다수에 의해 데이터가 필요해지고 어떤 데이터가 필요한지 사전에 예측이 가능하지 못하니 중앙집중식이 되는 경우가 다반사이기 때문입니다.
+물론, 분산 구조를 지향하고 설계할 수 있습니다.
+그러나 클러스터 간의 데이터는 낮은 지연 시간을 가져야 하며 사용자에 도달하기까지 더 긴 시간이 걸릴 것을 감안해야 합니다.
+그렇기 때문에 서버와 컴퓨팅 역량과 메모리 사용량, 네트워크 대역폭을 모두 고려하여 클러스터 간에 정보를 가장 빠르고 효과적으로 공유할 수 있는 방법을 찾아야 했습니다.
+
+### Stateful 대신 Stateless
+
+저는 이를 위해서 알려진 MQ 혹은 PubSub 브로커인 Kafka, RabbitMQ, Redis 등에 관하여 일련의 조사를 진행했습니다.
+그리고 초기 벤치마크 결과 검색에서 당연하게도 메모리를 저장소처럼 사용하는 Redis가 RabbitMQ나 Kafka보다는 낮은 지연 시간으로 강점을 보였습니다.
+하지만 Redis의 가장 커다란 단점은 [클러스터링 대책이 무지](https://github.com/redis/redis/issues/2672)하다는 것이었습니다.
+여전히 저는 Redis급의 낮은 지연 시간을 원했고 다시 제가 정말로 찾는 조건이 무엇인지 생각했습니다.
+
+1. **낮은 지연 시간**, 클러스터 간의 동기화 시간은 외부 네트워크로 인한 지연을 고려했을 때 최대한 없애야 합니다.
+2. **작은 크기의 메세지**, 채팅 데이터 등의 메세지 크기는 작은 편에 속하며 파일 등을 웹 소켓 등을 사용하여 전달하지 않을 예정입니다.
+3. **소규모에서도 사용 가능한 무료 브로커**, 그리고 제 목표 중 하나인 가벼움으로 그 어떤 크기의 서버에서도 사용 가능해야 했습니다.
+
+그리고 다시 위 조건에 맞추어서 정말로 조건에 적합한 브로커는 어떤 특징을 가지고 있는지 살펴본 결과로 '상태 관리'가 되지 않는다는 공통점을 가지고 있었습니다.
+
+```markdown
+// https://gist.github.com/hmartiro/85b89858d2c12ae1a0f9
+
+Results for one writer, four readers (using time parallel -j 4 ./build/COMMAND_NAME -- 1 2 3 4):
+
+- ZeroMQ, Pub/Sub: 410,000 msg/s, latency 0-15 ms, avg ~3-4 ms (goes down to <1 ms if we limit the publisher to what the subscribers can consume)
+- Redis Get/Set (async): 72,800 sets/s, 40,700 gets/s, latency 0-21 ms, avg ~1-2 ms
+- Redis Pub/Sub (async): 67,800 msg/s, latency 0-2 ms, avg <1 ms (repeat tests confirm this is faster than with one writer, reason unknown)
+```
+
+> 꽤 오래된 벤치마크지만 Redis는 아키텍쳐가 크게 변하지조차 않았습니다.
+
+또 당시에 저는 Redis와 비슷한 지연 시간을 가지는 ZeroMQ를 찾아냈는데 정말로 빠른, 단순히 프로세스 간 커뮤니케이션만을 목표로한 프로젝트라고 생각하기도 했습니다.
+하지만 ZeroMQ 또한 이전 메세지를 다시 불러오거나 하는 기능을 가지고 있지는 않았고 단순히 포워더에 가까운 역할을 하고 있었습니다.
+이러한 프로젝트는 물론 지연 시간이 극도로 낮았고 저의 기준을 거의 충족하다시피 했습니다.
+메세지는 또한 TCP 위에서 이동하므로 그 안전 또한 어느정도 보장됩니다.
+
+다시 정리하면 상태를 유지하는지 유지하지 않는지에 따라서 다시 나열을 할 수 있습니다:
+- Stateful: Kafka, RabbitMQ ...
+- Stateless: Redis, ZeroMQ ...
+
+공통적으로 또 Stateful한 브로커들은 최소 시스템 요구 사항을 높이고 있었습니다.
+이는 위에서 언급한 3번, 소규모에서도 사용 가능한 무료 브로커라는 규칙에 위반하므로 저는 이렇게 Stateless하게 메세지를 관리하는 브로커들을 사용하기로 결정했습니다.
+많은 자료들을 비교한 결과 여전히 ZeroMQ가 지연 시간과 벤치마크 상에서 선두를 달리고 있었고 저는 최종적으로 ZeroMQ를 사용하는 것으로 결정합니다.
+또 [Stack Overflow 글](https://stackoverflow.com/questions/731233/activemq-or-rabbitmq-or-zeromq-or)에서 ZeroMQ의 접근은 대규모 시스템의 설계를 할 때 눈여겨 볼만하다는 의견도 있었고 이것이 결정하는데에 한 몫을 했습니다.
+
+혹시나 보안 계층이 없는 브로커에 대해서 걱정을 하실 수 있는데 저는 기본적으로 모든 트래픽은 분산된 체계일 경우에 SSH Tunneling으로 처리하는 경향을 가지고 있습니다.
+SSH는 경량의 보안이 확정된 프로토콜으로 SSH 포트포워딩을 사용하면 클러스터 간의 포트 공유를 안전하고 쉽게 할 수 있기 때문에 보안보다는 성능에 집중을 한 결정이었습니다.
+
+### ZeroMQ에서 Mangos까지
+
+하지만 한 가지를 저는 계속 방심하고 있었습니다.
+바로 ZeroMQ는 굉장히 옛날 프로젝트라는 점입니다.
+심각하게도 옛날 프로젝트이기 때문에 사실 상 관련 라이브러리들이 거의 죽은 상태에 가까웠습니다.
+
+**프로젝트 GitHub에서 보기**
+
+<Button icon={MdArrowForward} href='https://github.com/zeromq'>ZeroMQ</Button>
+<Button icon={MdArrowForward} href='https://github.com/nanomsg/nng'>NNG</Button>
+
+일단 라이브러리만 보고서 낙심한 다음 다시 Redis를 그냥 쓰면 안 될까 싶은 마음을 부여잡고 검색을 시작했고 그 결과 ZeroMQ의 다음 버전인 NNG를 찾아내게 되었습니다.
+NNG는 물론 분기 사유는 다르지만 ZeroMQ로 치자면 MariaDB와 MySQL과 같은 관계였습니다.
+또 MIT 라이선스로 작성되어서 조금 더 자유롭게 사용할 수 있을 것처럼 보이기도 했습니다.
+
+그리고 간단한 예제 코드를 돌려보려는 순간에 문제가 터졌습니다.
+저는 M1 사용자였던 것입니다.
+물론 M1이지만 x86과 같이 빌드를 자연스럽게 할 수 있다는 것을 알고 있습니다.
+그러나 Cmake는 arm 버전이었고 타겟은 x86 심볼만 가지고 있는 상태에서 C 생태계를 잘 모르는 저에게 `ld` 오류는 개발 시간으로나 어떤 방면으로나 치명적이었고 바로 문의를 보냈습니다.
+떠오른 해결책인 Cmake를 x86 버전으로 다시 설치하는 작업은 현재 모든 툴체인이 Homebrew로 묶여 있는 상태에서 과감히 시도하기가 꺼려지기도 했습니다.
+
+~~혹시라도 이걸 보시는 C 고수분들은 부디 제 귀찮음을 용서해주시기 바랍니다.~~
+
+> **Seia — 02/10/2021**
+> It would be nice if I can develop nng application natively on M1. I know that I can do it by installing all components like cmake in x86 releases but not that nice as I need to setup things in different architecture again.
+> Is there anyone tried nng with arm? Not cross compiling x86 to arm.
+> Happy to know if there is anyone in like my situation :)
+
+다행스럽게도 바로 개발자 분이 연락을 받아주셨습니다.
+
+> **gdamore — Yesterday at 00:41**
+> Probably not.  Some of the symbols are explicitly private.
+> Which symbols is it complaining about.
+> I am going to be ordering an M1 MBA so that soon this will be more commonly tested.
+> Having said that you will probably want a full arm64 tool chain.
+> I really don’t think the process for M1 should be any different than the x86 process. Except you need Xcode that works on M1.  Might need a newer CMake too - as CMake had OS awareness.
+
+그리고 Node.JS만으로 제가 하려는 프로젝트에 성능이 부족하다는 설명을 하자 감사히도 잘 들어주시고 Go로 포팅된 프로젝트인 Mangos를 설명해주셨습니다.
+
+> **gdamore — Yesterday at 03:12**
+> It might be easier to do this in go with mangos if you’re not comfortable with C.
+> Mangos will scale very well and is wire compatible with NNg and nanomsg
+> It’s a lot easier working from go.
+
+그렇게 저는 당장 Mangos에서 효율적으로 Goroutine 사용을 위해 Golang을 학습하기 시작했고 계속 프로젝트를 향상시키고 있습니다.
+
+### PubSub 클러스터 사이에 대역폭 줄이기
+
+단순히 모든 메세지를 모든 노드로 포워딩하여 대역폭을 줄이는 일이 더 맞을지도 모릅니다.
+하지만 서버 간에 외부 네트워크를 사용한다면 네트워크 대역폭이 분명히 부담이 될 것입니다.
+이는 분명히 어려운 문제였습니다.
+왜냐하면 클러스터 노드 중에서 누가 과연 특정 데이터를 받고 싶은지 그 때 그 때마다 파악이 불가능하기 때문입니다.
+예를 들어서 다음과 같은 상황을 생각해볼 수 있습니다.
+
+```
+        ┌────┐
+        │User│
+        └─▲──┘
+          │
+┌─────────┴─┐    ┌───────────┐
+│ Cluster 1 ├────┤ Cluster 2 │
+└──────┬────┘    └────┬──────┘
+       │              │
+     ┌─▼──┐           │
+     │User│         ┌─▼──┐
+     └────┘         │User│
+                    └────┘
+```
+
+- User는 모든 같은 사용자 ID를 가진 타 기기 사용자입니다.
+- User는 모두 다른 기기로 모든 클러스터에 연결되어 있습니다.
+
+이 때 단순히 사용자 ID만으로 받을 클러스터 노드를 선택적으로 결정한다면 2번 클러스터에 사용자가 있다고 판명되는 순간 나머지 기기는 이벤트를 더 이상 받을 수 없게 될 것입니다.
+하지만 그렇다고 언제나마냥 모든 클러스터에게 데이터를 전송하는 것 또한 쉽지 않을 것입니다.
+그래서 저는 하나의 상태 관리 노드를 생성하고 여기에 받을 Identifier를 노드별로 관리하기로 하였습니다.
+
+```
+      ┌───────────────┐
+      │  Redis Store  │
+      └───────┬───────┘
+              │
+      ┌───────┴───────┐
+      │ State Manager │
+      └─▲─┬───────▲─┬─┘
+        │ │       │ │
+        │ │       │ │
+┌───────┴─▼─┐    ┌┴─▼────────┐    ┌──────────┐
+│ Cluster 1 │    │ Cluster 2 ◄────┤  User 1  │
+└───────────┘    └───────────┘    └──────────┘
+```
+
+아래와 같은 시나리오를 생각하면 대역폭을 더욱 효과적으로 줄일 수 있을 것으로 예상했습니다.
+
+1. User 1의 기기가 Cluster 2에 접속합니다.
+2. Cluster 2는 User 1이 접속했다는 사실을 State Manager에 전송합니다.
+3. State Manager는 Redis Store에 Cluster 2의 목록에 User 1이 있음을 기록합니다.
+4. Cluster 1에서 User 1에게 전달되는 메세지를 받고 타 Cluster에 User 1이 접속됨을 확인하고 State Manager에게 메세지를 전달합니다.
+5. State Manager는 Redis Store에서 User 1이 존재하는 클러스터를 찾아 다시 메세지를 전달합니다.
+6. 메세지를 받은 Cluster 2가 다시 User 1에게 메세지를 전달합니다.
+
+물론 제일 좋은 시나리오는 모든 컴포넌트가 하나의 리전에 있는 것입니다.
+하지만 이 방식을 사용하면 각각의 클러스터가 혹시라도 서로가 멀리 떨어져 있더라도 State Manager와의 거리만 좁히면 되므로 지연 시간을 낮출 수 있다고 생각합니다.
+
+### 효율적인 웹 소켓
+
+일단 제목에 맞게 Node.JS는 잠시 빠져주어야 합니다.
+성능이나 효율성에서 보았을 때 컴파일 언어에 비해서 전혀 나을 것이 없기 때문입니다.
+예를 들어서 uWebSockets.JS라는 프로젝트는 이러한 점을 사용해 C++로 웹 소켓을 구현하여 타 JavaScript 웹 소켓 라이브러리보다 더 높은 성능을 추구합니다.
+
+
+
+하지만 바인딩된 프로젝트로 클러스터링을 하는데에는 추가 고려 사항이 필요하고 차라리 오버헤드를 완전히 줄이기 위해 위에서 소개받은 Golang 또한 웹 소켓에 적용을 시키면 되지 않을까라는 생각이 들었습니다.
+그리고 [Mail.ru에서 3백만 개의 연결을 Golang과 함께 처리했다는 글](https://www.freecodecamp.org/news/million-websockets-and-go-cc58418460bb/)을 발견했습니다.
+저는 기존에 이렇게 효과적으로 많은 연결을 처리한 글을 보지 못했고 바로 이끌려서 Golang으로 같은 구현을 저의 케이스에 맞게 처리해보기로 했습니다.
+
+```
+          Golang WebSocket
+┌─────────┐       ┌──────┐
+│ Cluster ├───────► User │
+└▲┌───────┘       └──────┘
+ ││
+ ││
+ ││ Mangos.Socket / TCP
+┌┘▼───────┐
+│   API   │
+└─────────┘
+```
+
+그렇게 저의 아키텍쳐는 여기까지 오게 되었습니다.
+API 서버와 클러스터를 경량 Mangos 소켓이나 경량 TCP 자체 프로토콜로 엮어 사용하고 사용자에게까지 전달되어 최종 성능에 큰 영향을 미치는 웹 소켓까지 Golang으로 작성하는 것입니다.
+
+### 더 효율적인 페이로드
+
+소켓 통신의 마지막 과정은 과연 어떤 형식으로 오고가는 데이터를 직렬화하느냐입니다.
+이것은 굉장히 중요한 문제인데 데이터에서 발생하는 오버헤드가 대역폭부터 역직렬화 성능을 결정되기 때문입니다.
+기본적으로는 JSON을 사용할 수 있지만 이를 대체하기 위해 BSON이나 CBOR(Msgpack의 포크)를 사용할 수가 있습니다.
+
+<Button icon={MdArrowForward} href='https://stackoverflow.com/questions/6355497/performant-entity-serialization-bson-vs-messagepack-vs-json'>
+  Stack Overflow: BSON vs MessagePack vs JSON
+</Button>
+
+여기에서 물론 BSON은 자체적으로 역직렬화없이도 데이터 업데이트가 가능하지만 호환성을 생각했을 때 MessagePack이 더 적합하고 설계 상 오버헤드가 더 적어 유리합니다.
+JSON 관련 메서드는 최근 Node.JS에서 매우 빠르게 최적화가 되고 있어 성능 상에서 유리하더라도 네트워크 대역폭을 줄이는 것이 비용을 줄이는데에 더 효과적이기 때문에 이 프로젝트에서는 CBOR를 선택할 예정입니다.
+
+## TypeScript와 Fastify
+
+마지막으로는 TypeScript와 Fastify를 사용하면서 얻은 경험을 소개하면서 가장 기본적인 설계도를 마쳐볼까 합니다.
+사실 다른 글에서도 언급한 내용을 굉장히 자주 언급하는 기분이지만 저 스스로 아이디어를 얻기 위해서 쓰는 것도 있으니 이 글에서도 바로 제가 Fastify를 사용하는 방법을 소개해보려고 합니다.
+
+Fastify는 속도부터 컨벤션까지 모든 부분에서 Express 등 기존의 프레임워크보다 완벽하다고 할 수 있는 프레임워크입니다.
+대표적으로 비동기 지원을 하는데에도 Callback-like 등 파편화가 꽤 많이 되어 있는 구 JavaScript 비동기 함수도 완벽히 지원하는 동시에 Node.JS의 엔진 최적화 기법까지 다양하게 사용된 프레임워크입니다.
+
+### Request-to-Response Type Checking
+
+그리고 제가 TypeScript를 사용해보면서 꼭 지키고자 한 것이 있습니다.
+바로 `any`는 무슨 일이 있어도 쓰지 말자는 것입니다.
+그래서 아쉬운 김에 Fastify에서도 Request부터 Response까지 완벽히 Type checking을 도입해보고자 TypeBox를 통해 간단한 모듈을 만들었었습니다.
+
+본론을 미리 밝히자면 모든 것은 아래 Boilderplate에 소개되어 있습니다:
+
+<Button icon={MdArrowForward} href='https://github.com/seia-soto/typescript-fastify-boilerplate'>
+  TypeScript + Fastify Boilderplate
+</Button>
+
+```typescript
+import { Static, Type } from '@sinclair/typebox'
+import { createReplyCallback, createSchema } from './utils'
+
+export const HealthQuerySchema = createSchema(Type.Object({
+  time: Type.Integer()
+}))
+export type THealthQuerySchema = Static<typeof HealthQuerySchema>
+
+export const queried = createReplyCallback<THealthQuerySchema>(
+  'APP_HEALTH_QUERIED',
+  true
+)
+```
+
+위 코드에서 `HealthQuerySchema`는 `createSchema` 함수를 통해 TypeBox 객체입니다.
+아래에서 확인할 수 있듯이 일관된 응답 스키마를 만들어주고 `payload`에 `innerSchema`를 받아 주입시켜주는 역할을 합니다.
+그리고 `createReplyCallback` 함수를 통해서 '`payload`에 주입될 본문을 함수로 받는 함수'를 다시 반환시킵니다.
+
+```typescript
+/**
+ * Build schema dynamically setting reply payload
+ *
+ * @param innerSchema The schema of the reply payload
+ * @returns Dynamically built schema added payload type
+ */
+export const createSchema = <T extends TSchema>(innerSchema: T): TObject<{
+  code: TString,
+  success: TBoolean,
+  payload: T
+}> => {
+  return Type.Object({
+    code: Type.String(),
+    success: Type.Boolean(),
+    payload: innerSchema
+  })
+}
+```
+
+그렇게 되면 최종적으로 아래와 같이 Generic `Reply` 인자에 TypeBox 객체에서 TypeScript Type으로 전환된 `THealthQuerySchema`를 바로 사용할 수 있게 됩니다.
+이 때에 Generic으로 온전한 Type이 전달되었기 때문에 동시에 `replies.health.queried` 함수가 검증이 되고 다시 이 `replies.health.queried` 함수이 들어가는 본문이 `createReplyCallback<T>`로 검증이 되게 됩니다.
+
+```typescript
+import type { FastifyPluginCallback } from 'fastify'
+import * as replies from '../../replies'
+
+export const router: FastifyPluginCallback = (fastify, opts, done) => {
+  fastify.route<{ Reply: replies.utils.TReplySchema | replies.health.THealthQuerySchema }>({
+    method: 'GET',
+    url: '/',
+    schema: {
+      response: {
+        200: replies.health.HealthQuerySchema
+      }
+    },
+    handler: async () => {
+      return replies.health.queried({
+        time: Date.now()
+      })
+    }
+  })
+
+  done()
+}
+```
+
+이렇게 되면 테스트 코드에서도 `replies.health.queried`를 바로 생성하거나 ajv를 이용하여 `HealthQuerySchema`로 바로 검사도 가능하여서 굉장히 편리한 테스트 코드 작성을 가능케합니다.
+
+### Object Shaping
+
+JavaScript에서 거의 모든 것은 객체입니다.
+심지어 배열도 객체처럼 `slice`, `length` 등 접근 가능한 프로퍼티를 가지고 있습니다.
