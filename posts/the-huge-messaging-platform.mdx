@@ -532,5 +532,154 @@ export const router: FastifyPluginCallback = (fastify, opts, done) => {
 
 ### Object Shaping
 
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/5nmpokoRaZI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 JavaScript에서 거의 모든 것은 객체입니다.
 심지어 배열도 객체처럼 `slice`, `length` 등 접근 가능한 프로퍼티를 가지고 있습니다.
+그리고 모든 객체는 내부적으로 다음과 같은 키 값들을 가지고 있습니다.
+
+```javascript
+{
+  [[Value]]: 5,
+  [[Writable]]: true,
+  [[Enumerable]]: true,
+  [[Configurable]]: true
+}
+```
+
+이 값들은 `Object.getOwnPropertyDescriptor`로 가져올 수 있습니다.
+
+```javascript
+const object = { prop: 34 }
+Object.getOwnPropertyDescriptor(object, 'prop')
+// { value: 34, writable: true, enumerable: true, configurable: true }
+```
+
+그런데 이 객체들이 자주 사용되게 되면 불필요한 메모리 사용을 줄이고 속도를 높이기 위해서 JavaScript 엔진은 반복적으로 사용되는 Object의 모양, 즉, Shape를 저장해놓게 됩니다.
+물론, JavaScript에는 단 하나의 객체만 존재하는 것은 아니기 때문에 객체들이 초기화된 모양부터 시작하여 Radix와 유사한 형태의 트리로 저장됩니다.
+그리고 각각의 트리의 노드가 `[[Offset]]` 값을 가져 노드를 구분합니다.
+이 때 저희가 실질적으로 이용할 수 있는 것은 JavaScript의 Inline Caches(ICS) 기능인데 이는 JavaScript 엔진에서 특정 명령에서 사용된 Shape의 Offset 값을 기억하는 특징을 이용합니다.
+
+다시 정리하면 다음 코드에서 `getId` 구문 실행 시 `id` 속성에 접근한다는 것을 알고 `id`의 offset을 ICS에 저장하고 다음 번에 더 빨리 접근하려는 객체 속 속성의 Offset을 찾아낸다는 것입니다.
+
+```javascript
+const getId = userObj => {
+  return userObj.id
+}
+
+/**
+ * {
+ *   id: {
+ *     Offset: Unknown, // <- 구문 실행 시 ICS에 Offset 값을 찾아 지정
+ *     [[Value]]: 5,
+ *     [[Writable]]: true,
+ *     [[Enumerable]]: true,
+ *     [[Configurable]]: true
+ *   }
+ * }
+ */
+getId({
+  id: 1
+})
+```
+
+Fastify에서는 이를 이용하여 decorator라는 개념을 사용하는데 코드의 구조 상 ICS에 Offset이 효과적으로 기록되도록 하였습니다.
+예를 들어 Request 객체에 유저 ID를 추가한다고 한다면 아래와 같이 decorator를 적용합니다.
+
+```javascript
+fastify.decorateRequest('userId', 0)
+```
+
+이렇게 되면 Fastify의 decorate된 Request 모양의 Offset이 그 자체로 ICS에 기록됩니다.
+
+```javascript
+{
+  ...,
+  userId: 0
+}
+```
+
+이런식으로 인증 로직을 구성한다면 매번 Request 객체에 새 프로퍼티를 할당하지 않게 되고 JavaScript 엔진이 새로운 모양을 트리에 추가하거나 Offset을 찾는 과정을 줄일 수 있습니다.
+단, 한 가지 주의해야 할 점은 ICS에 대한 내용은 객체 속성의 ***값***에 관한 것이었기 때문에 Reference Type을 사용한다면 지금까지의 노력과 달리 다시 재귀적으로 Offset을 찾게 되므로 단순히 `null`을 사용해야 된다는 것입니다.
+
+```javascript
+function checkReferenceType (name, fn) {
+  if (typeof fn === 'object' && fn && !(typeof fn.getter === 'function' || typeof fn.setter === 'function')) {
+    warning.emit('FSTDEP006', name)
+  }
+}
+```
+
+<Button icon={MdArrowForward} href='https://github.com/fastify/fastify/blob/9d48a3dfc7b9f5886462a068164b24b1077806f9/lib/decorate.js#L57'>
+  fastify/fastify//lib/decorate.js#L57
+</Button>
+
+> 이 주제에 대한 마지막 코멘트로는 **이러한 사실을 벤치마킹하려고 하는 것은 시간 낭비라는 것**입니다.
+> JavaScript 엔진은 단순히 ICS만을 사용하여 최적화하지 않습니다.
+> 즉, 여러분이 벤치마킹 코드를 작성한다한들 엔진은 다른 영역에서 다른 최적화 기법을 시도할 것이고 결국 그 결과는 순전히 ICS 때문이다라고 절대할 수 없습니다.
+
+## Search Backend
+
+마지막으로 설계에 관하여 다룰 주제는 바로 **검색**입니다.
+메세지가 수만개가 쏟아지는 상황에서 과연 어떤 검색 시스템을 사용해야 할까요?
+사실 본론에 들어가기에 앞서서 저도 물론 잘 모르겠습니다.
+한 번도 다루어본 적이 없는 주제이기 때문입니다.
+물론 기존에도 검색 시스템을 구현해본 적이 있습니다.
+하지만 실시간으로 데이터가 쏟아지는 상황은 절대 아니었습니다.
+
+제가 주로 사용했거나 알고 있는 검색 백엔드 시스템에는 Sonic과 TypeSense, MeiliSearch가 있습니다.
+모두 유명한 프로젝트들이고 Sonic같은 경우에는 실제로 Crisp 채팅에서 사용하려고 개발된 소프트웨어로 충분히 그 성능이 검증되었습니다.
+심지어 몇 백만 개의 단위에 메모리는 100MB 이하로 소비하는 극한까지 인덱싱 데이터 효율성을 끌어올리기도 했습니다.
+이에 그치지 않고 모든 언어의 유니코드를 지원해 검색 결과 정확도도 완벽에 가깝습니다.
+그러나 치명적인 문제가 하나 있는데 그것은 바로 데이터가 추가되면 인덱스를 다시 빌드한다는 것입니다.
+이 뜻은 상황에 따라서 100만개의 데이터가 존재하는데 1개가 추가되었다고 100만개를 다시 인덱싱해야 할 수도 있다는 뜻이 됩니다.
+
+하지만 대신에 이렇게 하면 말이 달라질 수도 있습니다:
+
+- 검색 백엔드를 적절히 Sharding합니다
+- 검색 백엔드에 일정 갯수의 채널을 유지합니다
+
+언제든 메세지가 준비되는 대신 클라이언트 쪽에서도 로드된 메세지를 따로 검색하도록 하는 것입니다.
+검색 시스템과 같은 경우에는 아직 정확한 결과값이나 벤치마크를 기대하기가 어렵고 케이스마다 굉장히 다른 결과도 볼 수 있어서 더 많은 생각이 필요합니다.
+
+## 애플리케이션 설계도 정리
+
+최종적으로 다시 설계도를 살펴보면 다음과 같은 구조를 가지고 있음을 알 수 있습니다.
+저는 각각의 컴포넌트가 최대한 최적화되도록 노력할 것이며 여전히 계속 나아가고 있습니다.
+추가로 데이터베이스에 대해서 크게 다루지는 않았지만 로그 등의 순차 데이터 저장을 위해 [Clickhouse DB](https://clickhouse.com/)를 사용할 계획에 있습니다.
+CDN같은 경우에는 최근 출시한 CloudFlare R2가 저렴한 가격으로 나쁘지 않아 보이기도 합니다.
+
+```
+ ┌────────────────┐ ┌────────────────┐
+ │  Col-based DB  │ │  Row-based DB  │
+ └───────▲────────┘ └─▲──────────────┘
+         │            │
+         │          ┌─┴───────┐      ┌───────┐
+         └──────────┤  Proxy  │      │  CDN  │
+                    └─▲───────┘      └──┬─▲──┘
+                      │                 │ │
+┌──────────────┐    ┌─┴───────┐     ┌───▼─┴────┐
+│  Search API  ◄────┤   API   ◄─────┤   User   │
+└──────────────┘    └─┬───────┘     └─────▲────┘
+                      │                   │
+     ┌─────────┐      │                   │
+     │         │    ┌─▼────────────┐      │
+     │         ◄────┤   Cluster    │      │
+     │  Redis  │    └──────────────┘      │
+     │  Cache  │                          │
+     │         │    ┌──────────────┐      │
+     │         ├────►   Cluster    ├──────┘
+     └─────────┘    └──────────────┘
+```
+
+다시 눈여겨볼 것은 효율성 극대화를 위해 클러스터 간에는 Mangos를 사용한다는 것과 Golang의 커다란 웹 소켓 최적화 기법입니다.
+또 컴포넌트 사이에 데이터 이동을 CBOR를 통해 한다는 것도 적지 않은 비중을 차지할 것입니다.
+어쩌다 보니 성능을 챙기게 되어 Golang이 차지하는 비중이 굉장히 커졌네요.
+
+----
+
+# Benchmarking
+
+이제 상용 제품과 비교를 시작해보고자 합니다.
+제가 개인적으로 비교하고 싶은 제품은 [Discord](https://discord.com/), [Slack](https://slack.com/) 그리고 [채널톡](https://channel.io/)입니다.
+다들 어떤 점을 공통적으로 가지고 있는지 그리고 차별점은 무엇인지 살펴보면서 저는 여기에서 무엇을 쏙쏙 골라내서 더 좋은 제품을 만들 수 있는지 고민해볼 시간입니다.
