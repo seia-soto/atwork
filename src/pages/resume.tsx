@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { MdArrowForward, MdSchool, MdDomain, MdEmail, MdWeb } from 'react-icons/md'
+import { FaGithub } from 'react-icons/fa'
 import Container from '../components/Container'
 import * as Button from '../components/Button'
 import * as Divider from '../components/Divider'
@@ -68,6 +69,9 @@ const Page: NextPage = () => {
 
         <Timeline.Item icon={MdEmail}>
           seia@outlook.kr
+        </Timeline.Item>
+        <Timeline.Item icon={FaGithub}>
+          <a href='https://github.com/seia-soto'>seia-soto</a>
         </Timeline.Item>
 
         <Timeline.Title>Status</Timeline.Title>
