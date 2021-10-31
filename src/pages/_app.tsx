@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import type { FC } from 'react'
+import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { RecoilRoot, useRecoilValue } from 'recoil'
 import { light, dark, globals } from '../styles/theme'
@@ -27,13 +28,19 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   globals()
 
   return (
-    <RecoilRoot>
-      <ThemeProvider>
-        <Foundation>
-          <Component {...pageProps} />
-        </Foundation>
-      </ThemeProvider>
-    </RecoilRoot>
+    <>
+      <Head>
+        <meta name='viewport' content='user-scalable=no, width=device-width, initial-scale=1.0' />
+      </Head>
+
+      <RecoilRoot>
+        <ThemeProvider>
+          <Foundation>
+            <Component {...pageProps} />
+          </Foundation>
+        </ThemeProvider>
+      </RecoilRoot>
+    </>
   )
 }
 
