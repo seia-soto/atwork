@@ -90,7 +90,9 @@ const Page: NextPage = () => {
         <Button.Icon
           icon={MdArrowForward}
           href='mailto:seia@outlook.kr'
-        >seia@outlook.kr</Button.Icon>
+        >
+          seia@outlook.kr
+        </Button.Icon>
 
         <p>
           기술 질문을 포함하여 단순 질문의 경우에는 어떠한 비용도 부담되지 않습니다.<br />
@@ -124,7 +126,7 @@ const Page: NextPage = () => {
             </h3>
 
             <p>
-              React를 사용하여 여러분의 프로젝트에 들어맞는 SPA를 개발합니다.
+              React와 TypeScript를 사용하여 여러분의 프로젝트에 들어맞는 웹 사이트를 개발합니다.
             </p>
           </Card.Item>
           <Card.Item>
@@ -135,7 +137,7 @@ const Page: NextPage = () => {
 
             <p>
               MITM을 사용하여 웹을 기반으로 동작하는 애플리케이션을 분석하고 필요한 API를 찾아 클라이언트를 만듭니다.
-              앱은 iOS만 가능합니다.
+              애플리케이션은 iOS만 가능합니다.
             </p>
           </Card.Item>
           <Card.Item>
@@ -180,7 +182,7 @@ const Page: NextPage = () => {
       </Container>
 
       <Container size='md'>
-        <h2>대금</h2>
+        <h2>비용</h2>
         <Divider.Full />
 
         <h3>제반 비용 계산</h3>
@@ -207,6 +209,12 @@ const Page: NextPage = () => {
         <p>
           중도에 진행을 포기할 시에는 초기 착수금을 포함하여 대금을 진행 상황에 따라 최대 70%까지 환불하고 진행한 작업물을 모두 이전해드립니다.
           착수일에서 일주일 안 혹은 진행한 질이나 양이 의미없다 판단되는 경우에는 전액 환불해드립니다.
+        </p>
+
+        <h3>추가 작업에 대한 정산</h3>
+        <p>
+          작업 진행 중 초기 요청 사항 외에 추가로 산정된 요청 사항이 있는 경우 비용을 재산정해야 합니다.
+          요청 사항 정리에 대한 모든 최종 책임은 발주처에 있으며 남은 기간 내에 구현하기가 어렵다고 판단될 경우 혹은 기간을 초과하여 산정하는 경우에는 시간 당 비용이 추가로 청구됩니다.
         </p>
       </Container>
 
