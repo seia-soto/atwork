@@ -1,11 +1,12 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { MdArrowForward } from 'react-icons/md'
+import { MdArrowForward, MdCardGiftcard, MdSend } from 'react-icons/md'
 import Container from '../components/Container'
 import * as Button from '../components/Button'
 import * as Divider from '../components/Divider'
 import * as Effects from '../components/Effects'
 import * as Header from '../components/Header'
+import * as Card from '../components/Card'
 import Navigation from '../layouts/Navigation'
 import * as paragraph from '../styles/paragraph'
 
@@ -41,12 +42,20 @@ const Page: NextPage = () => {
               <Effects.Featured href='https://github.com/typed-sh/blog'>설계</Effects.Featured>하고<br />
               <Effects.Featured href='https://github.com/seia-soto/clubhouse-api'>분석</Effects.Featured>했습니다<br />
               <br />
-              그리고 <Effects.Colored color='blue'>만들어가는 중</Effects.Colored>입니다.
+              그리고 <Effects.Colored color='blue'>만들어가고</Effects.Colored> 있습니다.
             </h1>
           </div>
         </Header.Context>
       </Header.Wrapper>
       <Divider.Full />
+
+      <Container size='md'>
+        <Card.Item style={{ width: '100%', maxWidth: '100%' }}>
+          현재 <Effects.Colored color='blue'>백엔드, 프론트엔드, 챗봇, 그리고 리버스 엔지니어링</Effects.Colored>에 대한 발주가 가능합니다.
+          <br /><br />
+          <Button.Icon theme='black' icon={MdArrowForward} href='/outsourcing'>세부 사항 확인</Button.Icon>
+        </Card.Item>
+      </Container>
 
       <Container size='md'>
         <div className={paragraph.featured()}>
@@ -74,7 +83,7 @@ const Page: NextPage = () => {
             이를 통해서 개발자라는 직업군에 있는 딜레마를 극복하고<br />
             더 많은 사람들과 성공적으로 문제를 해결하길 원합니다.
           </h3>
-          <Button.Icon theme='black' icon={MdArrowForward} href='https://github.com/seia-soto'>GitHub에서 활동 보기</Button.Icon>
+          <Button.Icon theme='black' icon={MdArrowForward} href='/resume'>Resume 보기</Button.Icon>
         </div>
       </Container>
     </>
