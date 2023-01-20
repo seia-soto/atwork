@@ -2,10 +2,10 @@
   "name": "atwork",
   "version": "2.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "parcel src/pub/index.html",
+    "build": "parcel build src/pub/index.html",
     "dump": "ts-node-esm scripts/createDumpContents.ts"
   },
   "keywords": [],
