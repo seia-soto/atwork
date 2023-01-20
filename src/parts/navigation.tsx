@@ -33,12 +33,16 @@ export default function Navigation() {
 			</NavigationItem>
 			<DesktopOnlyNavigationItem>
 				<HorizontalAligner direction='center'>
-					<Button hover='shade'>포트폴리오 — JavaScript 트렌드 따라잡기</Button>
+					<Button hover='shade'>
+						<Link to='/cases'>
+              프로젝트 보기
+						</Link>
+					</Button>
 				</HorizontalAligner>
 			</DesktopOnlyNavigationItem>
 			<NavigationItem>
 				<HorizontalAligner direction='right'>
-					right
+          right
 				</HorizontalAligner>
 			</NavigationItem>
 		</FixedNavigationBar>

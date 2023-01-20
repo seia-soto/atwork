@@ -11,7 +11,7 @@ const StackListRoot = styled('div', {
 });
 
 const StackListBar = styled(ListBar, {
-	margin: '0 8px',
+	margin: '10px 8px',
 });
 
 const StackListItem = styled(ListItem, {
@@ -21,6 +21,7 @@ const StackListItem = styled(ListItem, {
 	padding: '8px',
 
 	fontSize: '$f',
+	fontWeight: 500,
 	textAlign: 'center',
 
 	cursor: 'pointer',

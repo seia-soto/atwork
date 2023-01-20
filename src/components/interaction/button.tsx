@@ -3,11 +3,12 @@ import {styled} from '../../style/theme';
 export const Button = styled('button', {
 	textAlign: 'center',
 	fontSize: '$f',
+	fontWeight: 600,
 
 	color: '$text',
 	background: '$white',
 
-	padding: '16px',
+	padding: '12px 20px',
 	border: 'none',
 	borderRadius: '9999vh',
 

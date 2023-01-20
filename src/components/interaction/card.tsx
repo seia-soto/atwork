@@ -13,11 +13,13 @@ const CardHeader = styled('h3', {
 	paddingBottom: '8px',
 
 	fontSize: '$e',
-	fontWeight: 600,
+	fontWeight: 500,
 });
 
 const CardExcerpt = styled('p', {
 	paddingBottom: '8px',
+
+	color: '$text',
 
 	fontSize: '$f',
 	lineHeight: '1.6em',
