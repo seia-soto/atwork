@@ -82,7 +82,7 @@ const GalleryBar = styled('div', {
 
 		// eslint-disable-next-line @typescript-eslint/naming-convention
 		'@w900': {
-			width: 'calc(50% - 20px)',
+			width: 'calc(50% - 10px)',
 		},
 
 		// eslint-disable-next-line @typescript-eslint/naming-convention
