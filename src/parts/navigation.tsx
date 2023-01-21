@@ -1,14 +1,13 @@
 import {Link} from 'wouter';
 import {Avatar} from '../components/interaction/avatar';
-import {Button} from '../components/interaction/button';
 import {NavigationBar, NavigationItem} from '../components/navigation/bar';
 import {createDesktopOnlyComponent, HorizontalAligner} from '../components/position/any';
-import {uiNavigationHeightInPexel} from '../flags';
+import {uiNavigationHeightInPixel} from '../flags';
 import {styled} from '../style/theme';
 
 const FixedNavigationBar = styled(NavigationBar, {
 	position: 'fixed',
-	height: uiNavigationHeightInPexel,
+	height: uiNavigationHeightInPixel,
 
 	padding: '0 8px',
 
@@ -50,11 +49,6 @@ export default function Navigation() {
 			</DesktopOnlyNavigationItem>
 			<NavigationItem>
 				<HorizontalAligner direction='right'>
-					<Link to='/cases'>
-						<Button href='/cases' hover='shade'>
-						프로젝트 보기
-						</Button>
-					</Link>
 				</HorizontalAligner>
 			</NavigationItem>
 		</FixedNavigationBar>

@@ -57,29 +57,9 @@ export function Card({
 }
 
 export const CardBar = styled('div', {
-	display: 'flex',
-	flexWrap: 'wrap',
+	display: 'grid',
+	gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
 	gap: '12px',
 
 	margin: '18px',
-
-	// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-	[`& ${CardBox}`]: {
-		width: 'calc(25% - 12px)',
-
-		// eslint-disable-next-line @typescript-eslint/naming-convention
-		'@w900': {
-			width: 'calc(33% - 12px)',
-		},
-
-		// eslint-disable-next-line @typescript-eslint/naming-convention
-		'@w600': {
-			width: 'calc(50% - 12px)',
-		},
-
-		// eslint-disable-next-line @typescript-eslint/naming-convention
-		'@w400': {
-			width: '100%',
-		},
-	},
 });

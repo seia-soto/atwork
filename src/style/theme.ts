@@ -13,7 +13,7 @@ export const {styled, css} = createStitches({
 			whiteExplicit: '#fff',
 			black: '#000',
 			blackExplicit: '#000',
-			text: '#484848',
+			text: '#6a6a6a',
 			textActive: '#000',
 			acent: '#b98eff',
 			acentActive: '#651ed9',

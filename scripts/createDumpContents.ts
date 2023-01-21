@@ -16,7 +16,7 @@ const api = createApiInterface();
 			'title',
 			'feature_image',
 			'url',
-			'reading_time',
+			'excerpt',
 		],
 	});
 

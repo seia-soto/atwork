@@ -29,6 +29,19 @@ export const IconContainer = styled(HorizontalAligner, {
 	margin: '16px 0',
 });
 
+export const BottomPusher = styled('div', {
+	display: 'flex',
+	flexDirection: 'column',
+	alignContent: 'space-between',
+
+	width: '100%',
+	minHeight: '100vh',
+
+	'& > main': {
+		minHeight: '100vh',
+	},
+});
+
 export const createDesktopOnlyComponent = <T extends Parameters<typeof styled>[0]>(component: T) => styled(component, {
 	// eslint-disable-next-line @typescript-eslint/naming-convention
 	'@w600': {

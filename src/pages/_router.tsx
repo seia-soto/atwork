@@ -1,14 +1,19 @@
 import {Route} from 'wouter';
+import {BottomPusher} from '../components/position/any';
+import {Footer} from '../parts/footer';
 import Navigation from '../parts/navigation';
-import CasesPage from './cases';
 import IndexPage from './index';
 
 export default function Router() {
 	return (
 		<>
 			<Navigation />
-			<Route path='/' component={IndexPage} />
-			<Route path='/cases' component={CasesPage} />
+			<BottomPusher>
+				<main>
+					<Route path='/' component={IndexPage} />
+				</main>
+				<Footer />
+			</BottomPusher>
 		</>
 	);
 }
