@@ -19,11 +19,11 @@ const GalleryInner = styled('div', {
 	padding: '14px',
 });
 
-const GalleryHeader = styled('h2', {
+const GalleryHeading = styled('h2', {
 	width: '100%',
 
 	fontSize: '$e',
-	fontWeight: 400,
+	fontWeight: 500,
 	color: '$black',
 });
 
@@ -58,9 +58,9 @@ export function Gallery({posts}: {
 						<article key={iter}>
 							<GalleryImage src={post.feature_image} />
 							<GalleryInner>
-								<GalleryHeader>
+								<GalleryHeading>
 									<a href={post.url} target='_blank' referrerPolicy='no-referrer-when-downgrade' rel='noreferrer'>{post.title}</a>
-								</GalleryHeader>
+								</GalleryHeading>
 								<GalleryDescription>{post.excerpt}</GalleryDescription>
 							</GalleryInner>
 						</article>

@@ -9,7 +9,7 @@ const CardBox = styled('div', {
 	boxShadow: 'rgba(100, 100, 111, 0.2) 0px 4px 8px 0px',
 });
 
-const CardHeader = styled('h3', {
+const CardHeading = styled('h3', {
 	paddingBottom: '8px',
 
 	fontSize: '$e',
@@ -40,7 +40,7 @@ export function Card({
 	return (
 		<>
 			<CardBox>
-				<CardHeader>{displayName}</CardHeader>
+				<CardHeading>{displayName}</CardHeading>
 				<CardExcerpt>
 					{excerpt}
 				</CardExcerpt>

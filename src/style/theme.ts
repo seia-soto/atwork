@@ -18,6 +18,7 @@ export const {styled, css} = createStitches({
 			acent: '#b98eff',
 			acentActive: '#651ed9',
 			selection: '#eaeaea',
+			offside: '#eaeaea',
 		},
 		space: {},
 		fontSizes: {

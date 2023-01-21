@@ -6,7 +6,7 @@ import {styled} from '../style/theme';
 import {Gallery} from './gallery';
 
 const FooterBar = styled('footer', {
-	background: '$selection',
+	background: '$offside',
 });
 
 const FooterInner = styled('div', {
@@ -16,8 +16,10 @@ const FooterInner = styled('div', {
 });
 
 const FooterHeading = styled('h2', {
-	fontSize: '$d',
-	fontWeight: 500,
+	fontSize: '$f',
+	fontWeight: 600,
+
+	margin: '14px 0',
 });
 
 export function Footer() {
@@ -44,11 +46,15 @@ export function Footer() {
 		void next();
 	}, []);
 
+	const year = new Date().getFullYear();
+
 	return (
 		<FooterBar>
 			<Container pad='both'>
 				<FooterInner>
-					<FooterHeading>HoJeong Go</FooterHeading>
+					<FooterHeading>
+						Copyright {year < 2023 ? 2023 : year} HoJeong Go.
+					</FooterHeading>
 					<Gallery posts={posts} />
 				</FooterInner>
 			</Container>
