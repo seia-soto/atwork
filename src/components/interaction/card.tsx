@@ -30,7 +30,13 @@ const CardExcerpt = styled('p', {
 const CardLink = styled('a', {
 	display: 'inline-block',
 
+	color: '$acentActive',
 	fontSize: '$f',
+
+	// eslint-disable-next-line @typescript-eslint/naming-convention
+	'&:visited': {
+		color: '$acent',
+	},
 });
 
 export function Card({
