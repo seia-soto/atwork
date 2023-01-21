@@ -10,10 +10,6 @@ const StackListRoot = styled('div', {
 	position: 'relative',
 });
 
-const StackListBar = styled(ListBar, {
-	margin: '10px 8px',
-});
-
 const StackListItem = styled(ListItem, {
 	width: '80px',
 
@@ -134,7 +130,7 @@ export function StackList({
 	}, [listBarRef]);
 
 	return <StackListRoot>
-		<StackListBar
+		<ListBar
 			// @ts-expect-error It's actual OList reference
 			ref={listBarRef}
 		>
@@ -186,6 +182,6 @@ export function StackList({
 					</StackListScrollableButton>
 				)
 			}
-		</StackListBar>
+		</ListBar>
 	</StackListRoot>;
 }

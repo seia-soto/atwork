@@ -19,7 +19,7 @@ const FooterHeading = styled('h2', {
 	fontSize: '$f',
 	fontWeight: 600,
 
-	margin: '14px 0',
+	margin: '8px 0',
 });
 
 export function Footer() {

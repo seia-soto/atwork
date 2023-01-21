@@ -11,6 +11,7 @@ const CardBox = styled('div', {
 
 const CardHeading = styled('h3', {
 	paddingBottom: '8px',
+	margin: 0,
 
 	fontSize: '$e',
 	fontWeight: 500,
@@ -18,6 +19,7 @@ const CardHeading = styled('h3', {
 
 const CardExcerpt = styled('p', {
 	paddingBottom: '8px',
+	margin: 0,
 
 	color: '$text',
 
@@ -61,5 +63,5 @@ export const CardBar = styled('div', {
 	gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
 	gap: '12px',
 
-	margin: '18px',
+	margin: '18px 0',
 });

@@ -1,5 +1,6 @@
 import {Container} from '../components/baseline/container';
 import {Card, CardBar} from '../components/interaction/card';
+import {SectionHeader} from '../components/interaction/header';
 import {StackList, useStackList} from '../parts/stack';
 import {projects} from '../sources/projects';
 import {stacks, type StackOptionNames} from '../sources/stacks';
@@ -8,7 +9,10 @@ export default function IndexPage() {
 	const {selection, setSelection} = useStackList(stacks);
 
 	return <>
-		<Container pusher>
+		<Container pusher pad='both'>
+			<SectionHeader>
+				<h2>asdf</h2>
+			</SectionHeader>
 			<StackList
 				selection={selection}
 				setSelection={setSelection}

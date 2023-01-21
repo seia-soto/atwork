@@ -21,6 +21,7 @@ const GalleryInner = styled('div', {
 
 const GalleryHeading = styled('h2', {
 	width: '100%',
+	margin: 0,
 
 	fontSize: '$e',
 	fontWeight: 500,
@@ -29,6 +30,8 @@ const GalleryHeading = styled('h2', {
 
 const GalleryDescription = styled('p', {
 	color: '$text',
+
+	margin: 0,
 });
 
 const GalleryBar = styled('div', {
