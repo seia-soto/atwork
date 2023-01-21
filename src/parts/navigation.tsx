@@ -1,48 +1,60 @@
 import {Link} from 'wouter';
+import {Avatar} from '../components/interaction/avatar';
 import {Button} from '../components/interaction/button';
 import {NavigationBar, NavigationItem} from '../components/navigation/bar';
 import {createDesktopOnlyComponent, HorizontalAligner} from '../components/position/any';
+import {uiNavigationHeightInPexel} from '../flags';
 import {styled} from '../style/theme';
 
 const FixedNavigationBar = styled(NavigationBar, {
-	color: '$text',
+	position: 'fixed',
+	height: uiNavigationHeightInPexel,
 
-	height: '72px',
+	padding: '0 8px',
+
+	color: '$text',
+	background: '$white',
+	zIndex: 2,
 
 	borderBottom: '1px solid #ececec',
 });
 
-const Heading = styled('h1', {
-	fontSize: '$e',
-	fontWeight: '500',
+const SignatureBar = styled('a', {
+	height: '100%',
+
+	display: 'inline-flex',
+	alignItems: 'center',
+	alignContent: 'center',
+	flexDirection: 'row',
+	gap: '10px',
 });
 
 const DesktopOnlyNavigationItem = createDesktopOnlyComponent(NavigationItem);
+const DesktopOnlySignatureText = styled(createDesktopOnlyComponent('h1'), {
+	fontSize: '$e',
+	fontWeight: '500',
+});
 
 export default function Navigation() {
 	return (
 		<FixedNavigationBar>
 			<NavigationItem>
-				<HorizontalAligner>
-					<Link to='/'>
-						<Button>
-							<Heading>HoJeong Go</Heading>
-						</Button>
-					</Link>
-				</HorizontalAligner>
+				<Link to='/'>
+					<SignatureBar>
+						<Avatar shape='circle' src={new URL('../pub/assets/images/avatar.jpg', import.meta.url).toString()} />
+						<DesktopOnlySignatureText>HoJeong Go</DesktopOnlySignatureText>
+					</SignatureBar>
+				</Link>
 			</NavigationItem>
 			<DesktopOnlyNavigationItem>
-				<HorizontalAligner direction='center'>
-					<Button hover='shade'>
-						<Link to='/cases'>
-              프로젝트 보기
-						</Link>
-					</Button>
-				</HorizontalAligner>
 			</DesktopOnlyNavigationItem>
 			<NavigationItem>
 				<HorizontalAligner direction='right'>
-          right
+					<Link to='/cases'>
+						<Button href='/cases' hover='shade'>
+						프로젝트 보기
+						</Button>
+					</Link>
 				</HorizontalAligner>
 			</NavigationItem>
 		</FixedNavigationBar>

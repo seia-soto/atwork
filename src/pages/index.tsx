@@ -130,7 +130,7 @@ export default function IndexPage() {
 
 	if (!posts) {
 		return <>
-			<Container>
+			<Container pusher>
 				<GalleryBar>
 					{
 						(new Array(8).fill(0)).map((_, iter) => {
@@ -145,7 +145,7 @@ export default function IndexPage() {
 	}
 
 	return <>
-		<Container>
+		<Container pusher>
 			<GalleryBar>
 				{
 					posts.map((post, iter) => {

@@ -8,7 +8,7 @@ export default function CasesPage() {
 	const {selection, setSelection} = useStackList(stacks);
 
 	return <>
-		<Container>
+		<Container pusher>
 			<StackList
 				selection={selection}
 				setSelection={setSelection}

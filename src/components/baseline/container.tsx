@@ -1,3 +1,4 @@
+import {uiNavigationHeightInPexel} from '../../flags';
 import {styled} from '../../style/theme';
 
 export const Container = styled('div', {
@@ -15,6 +16,11 @@ export const Container = styled('div', {
 			},
 			both: {
 				padding: '14px',
+			},
+		},
+		pusher: {
+			true: {
+				paddingTop: uiNavigationHeightInPexel,
 			},
 		},
 	},

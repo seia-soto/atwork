@@ -1,6 +1,6 @@
 import {styled} from '../../style/theme';
 
-export const Button = styled('button', {
+export const Button = styled('a', {
 	textAlign: 'center',
 	fontSize: '$f',
 	fontWeight: 600,
