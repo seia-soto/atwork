@@ -1,4 +1,4 @@
-import {IoGitBranch} from 'react-icons/io5';
+import {IoEnterOutline, IoGitBranch} from 'react-icons/io5';
 import {type Project} from '../../sources/projects';
 import {styled} from '../../style/theme';
 
@@ -27,8 +27,22 @@ const CardExcerpt = styled('p', {
 	lineHeight: '1.6em',
 });
 
+const CardLinkBar = styled('ul', {
+	display: 'flex',
+	flexDirection: 'column',
+	gap: '5px',
+
+	padding: 0,
+	margin: 0,
+	listStyle: 'none',
+
+	'& > li': {
+		padding: 0,
+	},
+});
+
 const CardLink = styled('a', {
-	display: 'inline-block',
+	display: 'block',
 
 	color: '$acentActive',
 	fontSize: '$f',
@@ -52,13 +66,26 @@ export function Card({
 				<CardExcerpt>
 					{excerpt}
 				</CardExcerpt>
-				{
-					typeof sourceLink !== 'undefined' && (
-						<CardLink href={sourceLink} target='_blank' referrerPolicy='no-referrer'>
-							<IoGitBranch /> 소스코드
-						</CardLink>
-					)
-				}
+				<CardLinkBar>
+					{
+						typeof sourceLink !== 'undefined' && (
+							<li>
+								<CardLink href={sourceLink} target='_blank' referrerPolicy='no-referrer'>
+									<IoGitBranch /> 소스코드
+								</CardLink>
+							</li>
+						)
+					}
+					{
+						typeof previewLink !== 'undefined' && (
+							<li>
+								<CardLink href={previewLink} target='_blank' referrerPolicy='no-referrer'>
+									<IoEnterOutline /> 미리보기
+								</CardLink>
+							</li>
+						)
+					}
+				</CardLinkBar>
 			</CardBox>
 		</>
 	);

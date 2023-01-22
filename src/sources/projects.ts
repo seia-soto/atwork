@@ -13,6 +13,7 @@ export const projects: Record<StackOptionNames, Project[]> = {
 			displayName: 'JJIMC',
 			excerpt: 'JJIMC 웹 사이트 퍼블리싱',
 			sourceLink: 'https://github.com/JJ-IMC/website',
+			previewLink: 'https://jjimc.com/',
 		},
 		{
 			displayName: 'Next.JS기반 마크다운 블로그',
