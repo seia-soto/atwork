@@ -1,8 +1,10 @@
+import {lazy, Suspense} from 'react';
 import {Route} from 'wouter';
 import {BottomPusher} from '../components/position/any';
 import {Footer} from '../parts/footer';
 import Navigation from '../parts/navigation';
-import IndexPage from './index';
+
+const IndexPage = lazy(async () => import('./index'));
 
 export default function Router() {
 	return (
@@ -10,7 +12,9 @@ export default function Router() {
 			<Navigation />
 			<BottomPusher>
 				<main>
-					<Route path='/' component={IndexPage} />
+					<Suspense fallback={null}>
+						<Route path='/' component={IndexPage} />
+					</Suspense>
 				</main>
 				<Footer />
 			</BottomPusher>
