@@ -1,7 +1,7 @@
 import {Link} from 'wouter';
 import {Avatar} from '../components/interaction/avatar';
 import {NavigationBar, NavigationItem} from '../components/navigation/bar';
-import {createDesktopOnlyComponent, HorizontalAligner} from '../components/position/any';
+import {createDesktopOnlyComponent, Aligner} from '../components/position/any';
 import {uiNavigationHeightInPixel} from '../flags';
 import {styled} from '../style/theme';
 
@@ -48,8 +48,8 @@ export default function Navigation() {
 			<DesktopOnlyNavigationItem>
 			</DesktopOnlyNavigationItem>
 			<NavigationItem>
-				<HorizontalAligner direction='right'>
-				</HorizontalAligner>
+				<Aligner direction='right'>
+				</Aligner>
 			</NavigationItem>
 		</FixedNavigationBar>
 	);

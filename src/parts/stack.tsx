@@ -3,7 +3,7 @@ import {type IconType} from 'react-icons';
 import {IoArrowBack, IoArrowForward} from 'react-icons/io5';
 import {Button} from '../components/interaction/button';
 import {ListBar, ListItem} from '../components/navigation/list';
-import {HorizontalAligner, IconContainer} from '../components/position/any';
+import {Aligner, IconContainer} from '../components/position/any';
 import {styled} from '../style/theme';
 
 const StackListRoot = styled('div', {
@@ -142,9 +142,9 @@ export function StackList({
 							scroll(-scrollSize);
 						}}
 					>
-						<HorizontalAligner direction='center'>
+						<Aligner direction='center'>
 							<IoArrowBack />
-						</HorizontalAligner>
+						</Aligner>
 					</StackListScrollableButton>
 				)
 			}
@@ -176,9 +176,9 @@ export function StackList({
 							scroll(scrollSize);
 						}}
 					>
-						<HorizontalAligner direction='center'>
+						<Aligner direction='center'>
 							<IoArrowForward />
-						</HorizontalAligner>
+						</Aligner>
 					</StackListScrollableButton>
 				)
 			}

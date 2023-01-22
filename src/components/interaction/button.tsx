@@ -32,5 +32,21 @@ export const Button = styled('a', {
 				},
 			},
 		},
+		acent: {
+			true: {
+				color: '$white',
+				background: '$acentActive',
+
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				'&:hover': {
+					background: '$acent',
+				},
+
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				'&:visited': {
+					color: '$white',
+				},
+			},
+		},
 	},
 });

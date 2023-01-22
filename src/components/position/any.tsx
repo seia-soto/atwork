@@ -1,6 +1,6 @@
 import {styled} from '../../style/theme';
 
-export const HorizontalAligner = styled('div', {
+export const Aligner = styled('div', {
 	width: '100%',
 	height: '100%',
 
@@ -20,7 +20,7 @@ export const HorizontalAligner = styled('div', {
 	},
 });
 
-export const IconContainer = styled(HorizontalAligner, {
+export const IconContainer = styled(Aligner, {
 	width: '100%',
 	height: '100%',
 

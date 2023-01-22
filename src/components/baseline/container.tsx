@@ -3,7 +3,6 @@ import {styled} from '../../style/theme';
 
 export const Container = styled('div', {
 	maxWidth: '1400px',
-
 	margin: '0 auto',
 
 	variants: {
