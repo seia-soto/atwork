@@ -1,3 +1,0 @@
-# atwork
-
-This is portfolio.
