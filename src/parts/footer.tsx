@@ -12,7 +12,7 @@ const FooterBar = styled('footer', {
 const FooterInner = styled('div', {
 	display: 'flex',
 	flexDirection: 'column',
-	gap: '20px',
+	gap: '10px',
 });
 
 const FooterHeading = styled('h2', {
@@ -20,6 +20,15 @@ const FooterHeading = styled('h2', {
 	fontWeight: 600,
 
 	margin: '8px 0',
+});
+
+const FooterDescription = styled('p', {
+	color: '$text',
+
+	fontSize: '$f',
+	fontWeight: 400,
+
+	padding: 0,
 });
 
 export function Footer() {
@@ -52,10 +61,19 @@ export function Footer() {
 		<FooterBar>
 			<Container pad='both'>
 				<FooterInner>
-					<FooterHeading>
-						Copyright {year < 2023 ? 2023 : year} HoJeong Go.
-					</FooterHeading>
+					<p>
+						<a href='https://typed.sh' target='_blank' rel='noreferrer'>Typed.sh</a>에서 더 많은 스토리를 더 읽어보세요.
+					</p>
 					<Gallery posts={posts} />
+					<div>
+						<FooterHeading>
+						Copyright {year < 2023 ? 2023 : year} HoJeong Go.
+						</FooterHeading>
+						<FooterDescription>
+							웹 사이트 컨텐츠는 타 네트워크 사업자 망에서 호스트 중인 Typed.sh에서도 제공됩니다.
+							웹 사이트에 문의 사항이 있으신 경우 seia@outlook.kr로 연락하십시오.
+						</FooterDescription>
+					</div>
 				</FooterInner>
 			</Container>
 		</FooterBar>

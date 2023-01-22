@@ -1,4 +1,4 @@
-import {IoEnterOutline, IoGitBranch} from 'react-icons/io5';
+import {IoExpand, IoGitBranch} from 'react-icons/io5';
 import {type Project} from '../../sources/projects';
 import {styled} from '../../style/theme';
 
@@ -80,7 +80,7 @@ export function Card({
 						typeof previewLink !== 'undefined' && (
 							<li>
 								<CardLink href={previewLink} target='_blank' referrerPolicy='no-referrer'>
-									<IoEnterOutline /> 미리보기
+									<IoExpand /> 미리보기
 								</CardLink>
 							</li>
 						)
