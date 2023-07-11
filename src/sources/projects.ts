@@ -40,11 +40,6 @@ export const projects: Record<StackOptionNames, Project[]> = {
 			excerpt: '웹 사이트에서 방지한 복사 및 붙여넣기 기능을 다시 해제해주는 확장 플러그인',
 			sourceLink: 'https://github.com/seia-soto/neatified',
 		},
-		{
-			displayName: 'Chrome용 Discord Rich Presence',
-			excerpt: 'Chrome에서 외부 라이브러리없이 Discord RPC 통신을 허용해주는 확장 플러그인',
-			sourceLink: 'https://github.com/seia-soto/chrome-discord-presence',
-		},
 	],
 	[StackOptionNames.server]: [
 		{
@@ -62,6 +57,11 @@ export const projects: Record<StackOptionNames, Project[]> = {
 			excerpt: 'Fastify 기반의 OTP 관리용 API',
 			sourceLink: 'https://github.com/seia-soto/wotp',
 		},
+		{
+			displayName: 'embeddable-wg',
+			excerpt: 'embeddable-wg C 라이브러리의 Node.JS API 래퍼',
+			sourceLink: 'https://github.com/seia-soto/embeddable-wg',
+		}
 	],
 	[StackOptionNames.distribution]: [
 		{
@@ -77,9 +77,14 @@ export const projects: Record<StackOptionNames, Project[]> = {
 	],
 	[StackOptionNames.automation]: [
 		{
-			displayName: 'libTwitch',
-			excerpt: 'Twitch 비공식 API 클라이언트',
-			sourceLink: 'https://github.com/seia-soto/libtwitch',
+			displayName: 'libBagbak',
+			excerpt: 'Bagbak — iOS 앱 추출 프로그램의 API 래퍼',
+			sourceLink: 'https://github.com/seia-soto/libbagbak',
+		},
+		{
+			displayName: 'ipatool-node',
+			excerpt: 'IPATool의 Node.JS 포팅 버전',
+			sourceLink: 'https://github.com/seia-soto/ipatool-node',
 		},
 		{
 			displayName: '네이버 지도 운영시간 표시기',
@@ -108,6 +113,11 @@ export const projects: Record<StackOptionNames, Project[]> = {
 		},
 	],
 	[StackOptionNames.reverseEngeineering]: [
+		{
+			displayName: 'AdShield Defuser',
+			excerpt: 'JavaScript용 크로스 플랫폼 AdShield 바이너리 컨텐츠 복호화 도구',
+			sourceLink: 'https://github.com/seia-soto/adshield-defuser',
+		},
 		{
 			displayName: 'Clubhouse — 음성 채팅 앱',
 			excerpt: 'Clubhouse 음성 채팅 앱 리버스 엔지니어링',

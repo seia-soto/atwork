@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel src/pub/index.html",
     "build": "parcel build src/pub/index.html",
-    "dump": "ts-node-esm scripts/createDumpContents.ts"
+    "dump": "tsx scripts/createDumpContents.ts"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +25,7 @@
     "eslint-config-xo-typescript": "^0.55.1",
     "eslint-plugin-react": "^7.32.1",
     "parcel": "^2.8.3",
-    "ts-node": "^10.9.1",
+    "tsx": "^3.12.7",
     "typescript": "^4.9.4"
   },
   "dependencies": {
