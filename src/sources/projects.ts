@@ -61,7 +61,7 @@ export const projects: Record<StackOptionNames, Project[]> = {
 			displayName: 'embeddable-wg',
 			excerpt: 'embeddable-wg C 라이브러리의 Node.JS API 래퍼',
 			sourceLink: 'https://github.com/seia-soto/embeddable-wg',
-		}
+		},
 	],
 	[StackOptionNames.distribution]: [
 		{
